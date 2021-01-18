@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-01-16 01:21
+-- Generated: 2021-01-17 23:27
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -24,7 +24,7 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `Oficina`.`Mecanico` (
   `codigo` INT(11) NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(80) NOT NULL,
-  `cnpj` VARCHAR(14) NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
   `endereco` VARCHAR(80) NOT NULL,
   `cidade` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(30) NOT NULL,
