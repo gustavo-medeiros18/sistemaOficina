@@ -1,8 +1,29 @@
 package modelo;
 
 public class Carro {
-  private String modelo, fabricante, cor;
-  private Integer ano;
+  private String placa, marca, modelo;
+  private Double km;
+  private int codigoCliente;
+  
+  public Carro() {
+  
+  }
+
+  public String getPlaca() {
+    return placa;
+  }
+
+  public void setPlaca(String placa) {
+    this.placa = placa;
+  }
+
+  public String getMarca() {
+    return marca;
+  }
+
+  public void setMarca(String marca) {
+    this.marca = marca;
+  }
 
   public String getModelo() {
     return modelo;
@@ -12,27 +33,13 @@ public class Carro {
     this.modelo = modelo;
   }
 
-  public String getFabricante() {
-    return fabricante;
+  public Double getKm() {
+    return km;
   }
 
-  public void setFabricante(String fabricante) {
-    this.fabricante = fabricante;
+  public void setKm(Double km) {
+    this.km = km;
   }
-
-  public String getCor() {
-    return cor;
-  }
-
-  public void setCor(String cor) {
-    this.cor = cor;
-  }
-
-  public Integer getAno() {
-    return ano;
-  }
-
-  public void setAno(Integer ano) {
-    this.ano = ano;
-  }
+  
+  
 }

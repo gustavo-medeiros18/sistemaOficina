@@ -1,6 +1,6 @@
 package bean;
 
-import dao.CarroDao;
+/*import dao.CarroDao;*/
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -33,7 +33,7 @@ public class CarroBean {
   public void adicionar() {
     carros.add(c);
     
-    new CarroDao().salvar(c);
+    /*new CarroDao().salvar(c);*/
     
     c = new Carro();
   }

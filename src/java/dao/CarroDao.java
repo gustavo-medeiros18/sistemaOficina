@@ -1,4 +1,4 @@
-package dao;
+/*package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,4 +27,4 @@ public class CarroDao {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-}
+}*/
