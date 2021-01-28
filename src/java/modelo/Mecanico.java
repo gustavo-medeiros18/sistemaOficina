@@ -1,11 +1,11 @@
 package modelo;
 
 public class Mecanico {
-  /*A PK codigo do mecanico nao sera definida
+  /*A PK id do mecanico nao sera definida
   como um atributo da classe, pois seu valor
   sera determinado pelo BD, nao pelo usuario*/
   private String nome, cpf, endereco, cidade, estado;
-  private int codigoEquipe;
+  private int idEquipe;
 
   public String getNome() {
     return nome;
@@ -47,11 +47,11 @@ public class Mecanico {
     this.estado = estado;
   }
 
-  public int getCodigoEquipe() {
-    return codigoEquipe;
+  public int getIdEquipe() {
+    return idEquipe;
   }
 
-  public void setCodigoEquipe(int codigoEquipe) {
-    this.codigoEquipe = codigoEquipe;
+  public void setIdEquipe(int idEquipe) {
+    this.idEquipe = idEquipe;
   }
 }

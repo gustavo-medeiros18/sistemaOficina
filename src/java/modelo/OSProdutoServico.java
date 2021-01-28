@@ -5,7 +5,7 @@ package modelo;
  * as entidades Produto/Servico e OS
  */
 public class OSProdutoServico {
-  private int numeroOS, codigoPS;
+  private int numeroOS, idProdutoServico;
 
   public int getNumeroOS() {
     return numeroOS;
@@ -15,11 +15,11 @@ public class OSProdutoServico {
     this.numeroOS = numeroOS;
   }
 
-  public int getCodigoPS() {
-    return codigoPS;
+  public int getIdProdutoServico() {
+    return idProdutoServico;
   }
 
-  public void setCodigoPS(int codigoPS) {
-    this.codigoPS = codigoPS;
+  public void setIdProdutoServico(int idProdutoServico) {
+    this.idProdutoServico = idProdutoServico;
   }
 }

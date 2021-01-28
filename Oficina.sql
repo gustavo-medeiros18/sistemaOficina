@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2021-01-28 18:27
+-- Generated: 2021-01-28 20:30
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -40,7 +40,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `Oficina`.`Carro` (
-  `id` INT(11) NOT NULL,
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
   `placa` VARCHAR(8) NOT NULL,
   `marca` VARCHAR(45) NOT NULL,
   `modelo` VARCHAR(45) NOT NULL,
@@ -57,7 +57,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `Oficina`.`Equipe` (
-  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `id` INT(11) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

@@ -5,8 +5,8 @@ package modelo;
  * armazenara os dados de produtos e/ou servicos da oficina.
  */
 public class ProdutoServico {
-  /*A PK codigo de Produto/Servico nao sera
-  definido como um atributo da classe, pois
+  /*A PK id de Produto/Servico nao sera
+  definida como um atributo da classe, pois
   ela sera determinada pelo BD, nao pelo
   usuario*/
   private String nome;

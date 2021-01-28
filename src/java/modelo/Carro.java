@@ -1,9 +1,13 @@
 package modelo;
 
 public class Carro {
+  /*A PK id do carro nao sera
+  definida como um atributo da classe,
+  pois seu valor sera determinado pelo BD,
+  nao pelo usuario*/
   private String placa, marca, modelo;
   private Double km;
-  private int codigoCliente;
+  private int idCliente;
   
   public Carro() {
   
@@ -40,6 +44,12 @@ public class Carro {
   public void setKm(Double km) {
     this.km = km;
   }
-  
-  
+
+  public int getIdCliente() {
+    return idCliente;
+  }
+
+  public void setIdCliente(int idCliente) {
+    this.idCliente = idCliente;
+  }
 }

@@ -1,7 +1,7 @@
 package modelo;
 
 public class Cliente {
-  /*A PK codigo do cliente nao sera
+  /*A PK id do cliente nao sera
   definida como um atributo da classe,
   pois seu valor sera determinado pelo BD,
   nao pelo usuario*/
