@@ -13,17 +13,20 @@
     <h:form>
       <p:fieldset legend="Dados a serem inseridos">
         <p:panelGrid columns="2">
+          <h:outputLabel value="Placa"></h:outputLabel>
+          <p:inputText value = "#{carroBean.c.placa}"></p:inputText>
+
+          <h:outputLabel value="Marca"></h:outputLabel>
+          <p:inputText value="#{carroBean.c.marca}"></p:inputText>
+
           <h:outputLabel value="Modelo"></h:outputLabel>
-          <p:inputText value = "#{carroBean.c.modelo}"></p:inputText>
+          <p:inputText value="#{carroBean.c.modelo}"></p:inputText>
 
-          <h:outputLabel value="Fabricante"></h:outputLabel>
-          <p:inputText value="#{carroBean.c.fabricante}"></p:inputText>
-
-          <h:outputLabel value="Cor"></h:outputLabel>
-          <p:inputText value="#{carroBean.c.cor}"></p:inputText>
-
-          <h:outputLabel value="Ano (XXXX)"></h:outputLabel>
-          <p:inputMask mask="9999" value="#{carroBean.c.ano}"></p:inputMask>
+          <h:outputLabel value="Km"></h:outputLabel>
+          <p:inputText value="#{carroBean.c.km}"></p:inputText>
+          
+          <h:outputLabel value="ID do Cliente (Dono)"></h:outputLabel>
+          <p:inputText value="#{carroBean.c.idCliente}"></p:inputText>
         </p:panelGrid>
         
         <p:toolbar>
@@ -33,20 +36,24 @@
         </p:toolbar>
         
         <p:dataTable value="#{carroBean.carros}" var="carro">
+          <p:column headerText="Placa" sortBy="#{carro.placa}">
+            <h:outputText value="#{carro.placa}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Marca" sortBy="#{carro.marca}">
+            <h:outputText value="#{carro.marca}"></h:outputText>
+          </p:column>
+          
           <p:column headerText="Modelo" sortBy="#{carro.modelo}">
             <h:outputText value="#{carro.modelo}"></h:outputText>
           </p:column>
           
-          <p:column headerText="Fabricante" sortBy="#{carro.fabricante}">
-            <h:outputText value="#{carro.fabricante}"></h:outputText>
+          <p:column headerText="Km" sortBy="#{carro.km}">
+            <h:outputText value="#{carro.km}"></h:outputText>
           </p:column>
           
-          <p:column headerText="Cor" sortBy="#{carro.cor}">
-            <h:outputText value="#{carro.cor}"></h:outputText>
-          </p:column>
-          
-          <p:column headerText="Ano" sortBy="#{carro.ano}">
-            <h:outputText value="#{carro.ano}"></h:outputText>
+          <p:column headerText="ID Cliente (Dono)" sortBy="#{carro.idCliente}">
+            <h:outputText value="#{carro.idCliente}"></h:outputText>
           </p:column>
         </p:dataTable>
       </p:fieldset>
