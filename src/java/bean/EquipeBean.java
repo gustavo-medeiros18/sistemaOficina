@@ -1,0 +1,44 @@
+package bean;
+
+/*import dao.CarroDao;*/
+import java.util.ArrayList;
+import java.util.List;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import modelo.Equipe;
+
+@ManagedBean
+@SessionScoped
+
+public class EquipeBean {
+  private Equipe e = new Equipe();
+  private List<Equipe> equipes = new ArrayList<>();
+  
+  public Equipe getE() {
+    return e;
+  }
+
+  public void setE(Equipe e) {
+    this.e = e;
+  }
+
+  public List<Equipe> getEquipes() {
+    return equipes;
+  }
+
+  public void setEquipes(List<Equipe> equipes) {
+    this.equipes = equipes;
+  }
+  
+  public void adicionar() {
+    equipes.add(e);
+    
+    /*new CarroDao().salvar(c);*/
+    
+    e = new Equipe();
+  }
+  
+  public void remover(Equipe e) {
+    equipes.remove(e);
+  }
+}

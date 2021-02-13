@@ -14,7 +14,7 @@
       <p:fieldset legend="Dados a serem inseridos">
         <p:panelGrid columns="2">
           <h:outputLabel value="Placa"></h:outputLabel>
-          <p:inputText value = "#{carroBean.c.placa}"></p:inputText>
+          <p:inputMask mask="aaa-9999" value="#{carroBean.c.placa}"></p:inputMask>
 
           <h:outputLabel value="Marca"></h:outputLabel>
           <p:inputText value="#{carroBean.c.marca}"></p:inputText>
@@ -55,8 +55,11 @@
           <p:column headerText="ID Cliente (Dono)" sortBy="#{carro.idCliente}">
             <h:outputText value="#{carro.idCliente}"></h:outputText>
           </p:column>
+          
+          <p:column headerText="Ações">
+            <p:commandButton action="#{carroBean.remover(carro)}" value="Remover" update="@form"></p:commandButton>
+          </p:column>
         </p:dataTable>
       </p:fieldset>
     </h:form>
 </ui:decorate>
-

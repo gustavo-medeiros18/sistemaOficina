@@ -37,4 +37,8 @@ public class CarroBean {
     
     c = new Carro();
   }
+  
+  public void remover(Carro c) {
+    carros.remove(c);
+  }
 }

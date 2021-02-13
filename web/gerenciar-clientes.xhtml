@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+ 
+    <header>
+      <h1 style="font-family: calibri">Cadastro de clientes</h1>
+    </header>
+    
+    <h:form>
+      <p:fieldset legend="Dados a serem inseridos">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Nome"></h:outputLabel>
+          <p:inputMask value="#{clienteBean.c.nome}"></p:inputMask>
+
+          <h:outputLabel value="Endereco"></h:outputLabel>
+          <p:inputText value="#{clienteBean.c.endereco}"></p:inputText>
+
+          <h:outputLabel value="Cidade"></h:outputLabel>
+          <p:inputText value="#{clienteBean.c.cidade}"></p:inputText>
+
+          <h:outputLabel value="Estado"></h:outputLabel>
+          <p:inputText value="#{clienteBean.c.estado}"></p:inputText>
+        </p:panelGrid>
+        
+        <p:toolbar>
+          <p:toolbarGroup>
+            <p:commandButton value="Adicionar" action="#{clienteBean.adicionar()}" update="@form"></p:commandButton>
+          </p:toolbarGroup>
+        </p:toolbar>
+        
+        <p:dataTable value="#{clienteBean.clientes}" var="cliente">
+          <p:column headerText="Nome" sortBy="#{cliente.nome}">
+            <h:outputText value="#{cliente.nome}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Endereco" sortBy="#{cliente.endereco}">
+            <h:outputText value="#{cliente.endereco}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Cidade" sortBy="#{cliente.cidade}">
+            <h:outputText value="#{cliente.cidade}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Estado" sortBy="#{cliente.estado}">
+            <h:outputText value="#{cliente.estado}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Ações">
+            <p:commandButton action="#{clienteBean.remover(cliente)}" value="Remover" update="@form"></p:commandButton>
+          </p:column>
+        </p:dataTable>
+      </p:fieldset>
+    </h:form>
+</ui:decorate>

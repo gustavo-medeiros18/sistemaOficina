@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+ 
+    <header>
+      <h1 style="font-family: calibri">Cadastro de ordens de serviço</h1>
+    </header>
+    
+    <h:form>
+      <p:fieldset legend="Dados a serem inseridos">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Data"></h:outputLabel>
+          <p:inputMask value="#{oSBean.ordem.data}"></p:inputMask>
+
+          <h:outputLabel value="Placa do carro"></h:outputLabel>
+          <p:inputText value="#{oSBean.ordem.placaCarro}"></p:inputText>
+
+          <h:outputLabel value="ID Cliente"></h:outputLabel>
+          <p:inputText value="#{oSBean.ordem.idCliente}"></p:inputText>
+
+          <h:outputLabel value="ID Equipe"></h:outputLabel>
+          <p:inputText value="#{oSBean.ordem.idEquipe}"></p:inputText>
+        </p:panelGrid>
+        
+        <p:toolbar>
+          <p:toolbarGroup>
+            <p:commandButton value="Adicionar" action="#{oSBean.adicionar()}" update="@form"></p:commandButton>
+          </p:toolbarGroup>
+        </p:toolbar>
+        
+        <p:dataTable value="#{oSBean.ordens}" var="ordem">
+          <p:column headerText="Data" sortBy="#{ordem.data}">
+            <h:outputText value="#{ordem.data}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Placa do carro" sortBy="#{ordem.placaCarro}">
+            <h:outputText value="#{ordem.placaCarro}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="ID Cliente" sortBy="#{ordem.idCliente}">
+            <h:outputText value="#{ordem.idCliente}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="ID Equipe" sortBy="#{ordem.idEquipe}">
+            <h:outputText value="#{ordem.idEquipe}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Ações">
+            <p:commandButton action="#{oSBean.remover(ordem)}" value="Remover" update="@form"></p:commandButton>
+          </p:column>
+        </p:dataTable>
+      </p:fieldset>
+    </h:form>
+</ui:decorate>

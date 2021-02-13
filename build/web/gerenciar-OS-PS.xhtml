@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:decorate xmlns="http://www.w3.org/1999/xhtml"
+             xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+             xmlns:h="http://xmlns.jcp.org/jsf/html"
+             xmlns:p="http://primefaces.org/ui"
+             template="template.xhtml">
+ 
+    <header>
+      <h1 style="font-family: calibri">Cadastro de OS-Produto/Servico</h1>
+    </header>
+    
+    <h:form>
+      <p:fieldset legend="Dados a serem inseridos">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Número OS"></h:outputLabel>
+          <p:inputMask value="#{oSPSBean.OSPS.numeroOS}"></p:inputMask>
+          
+          <h:outputLabel value="ID Produto/Serviço"></h:outputLabel>
+          <p:inputMask value="#{oSPSBean.OSPS.idProdutoServico}"></p:inputMask>
+        </p:panelGrid>
+        
+        <p:toolbar>
+          <p:toolbarGroup>
+            <p:commandButton value="Adicionar" action="#{oSPSBean.adicionar()}" update="@form"></p:commandButton>
+          </p:toolbarGroup>
+        </p:toolbar>
+        
+        <p:dataTable value="#{oSPSBean.listaOSPS}" var="osps">
+          <p:column headerText="Número OS" sortBy="#{osps.numeroOS}">
+            <h:outputText value="#{osps.numeroOS}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="ID Produto/Serviço" sortBy="#{osps.idProdutoServico}">
+            <h:outputText value="#{osps.idProdutoServico}"></h:outputText>
+          </p:column>
+          
+          <p:column headerText="Ações">
+            <p:commandButton action="#{oSPSBean.remover(osps)}" value="Remover" update="@form"></p:commandButton>
+          </p:column>
+        </p:dataTable>
+      </p:fieldset>
+    </h:form>
+</ui:decorate>
