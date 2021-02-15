@@ -5,10 +5,23 @@ public class Cliente {
   definida como um atributo da classe,
   pois seu valor sera determinado pelo BD,
   nao pelo usuario*/
+  private int index; /*Indice de identificacao para alterar*/
   private String nome, endereco, cidade, estado;
 
+  public Cliente(int index) {
+    this.setIndex(index);
+  }
+  
   public Cliente() {
   
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
   }
   
   public String getNome() {

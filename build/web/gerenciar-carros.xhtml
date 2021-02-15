@@ -27,39 +27,65 @@
           
           <h:outputLabel value="ID do Cliente (Dono)"></h:outputLabel>
           <p:inputText value="#{carroBean.c.idCliente}"></p:inputText>
+          
+          <h:outputText value=""></h:outputText>
+          <p:commandButton value="Adicionar" action="#{carroBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
+      </p:fieldset> <br/>
         
-        <p:toolbar>
-          <p:toolbarGroup>
-            <p:commandButton value="Adicionar" action="#{carroBean.adicionar()}" update="@form"></p:commandButton>
-          </p:toolbarGroup>
-        </p:toolbar>
-        
-        <p:dataTable value="#{carroBean.carros}" var="carro">
-          <p:column headerText="Placa" sortBy="#{carro.placa}">
-            <h:outputText value="#{carro.placa}"></h:outputText>
-          </p:column>
+      <p:dataTable value="#{carroBean.carros}" var="carro">
+        <p:column headerText="Índice" sortBy="#{carro.index}">
+          <h:outputText value="#{carro.index}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Placa" sortBy="#{carro.placa}">
+          <h:outputText value="#{carro.placa}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Marca" sortBy="#{carro.marca}">
+          <h:outputText value="#{carro.marca}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Modelo" sortBy="#{carro.modelo}">
+          <h:outputText value="#{carro.modelo}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Km" sortBy="#{carro.km}">
+          <h:outputText value="#{carro.km}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="ID Cliente (Dono)" sortBy="#{carro.idCliente}">
+          <h:outputText value="#{carro.idCliente}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Ações">
+          <p:commandButton action="#{carroBean.remover(carro)}" value="Remover" update="@form"></p:commandButton>
+        </p:column>
+      </p:dataTable> <br/>
+      
+      <p:fieldset legend="Dados para alterar um carro (através do índice)">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Índice"></h:outputLabel>
+          <p:inputText value="#{carroBean.carroAlterado.index}"></p:inputText>
           
-          <p:column headerText="Marca" sortBy="#{carro.marca}">
-            <h:outputText value="#{carro.marca}"></h:outputText>
-          </p:column>
+          <h:outputLabel value="Placa"></h:outputLabel>
+          <p:inputMask mask="aaa-9999" value="#{carroBean.carroAlterado.placa}"></p:inputMask>
+
+          <h:outputLabel value="Marca"></h:outputLabel>
+          <p:inputText value="#{carroBean.carroAlterado.marca}"></p:inputText>
+
+          <h:outputLabel value="Modelo"></h:outputLabel>
+          <p:inputText value="#{carroBean.carroAlterado.modelo}"></p:inputText>
+
+          <h:outputLabel value="Km"></h:outputLabel>
+          <p:inputText value="#{carroBean.carroAlterado.km}"></p:inputText>
           
-          <p:column headerText="Modelo" sortBy="#{carro.modelo}">
-            <h:outputText value="#{carro.modelo}"></h:outputText>
-          </p:column>
+          <h:outputLabel value="ID do Cliente (Dono)"></h:outputLabel>
+          <p:inputText value="#{carroBean.carroAlterado.idCliente}"></p:inputText>
           
-          <p:column headerText="Km" sortBy="#{carro.km}">
-            <h:outputText value="#{carro.km}"></h:outputText>
-          </p:column>
-          
-          <p:column headerText="ID Cliente (Dono)" sortBy="#{carro.idCliente}">
-            <h:outputText value="#{carro.idCliente}"></h:outputText>
-          </p:column>
-          
-          <p:column headerText="Ações">
-            <p:commandButton action="#{carroBean.remover(carro)}" value="Remover" update="@form"></p:commandButton>
-          </p:column>
-        </p:dataTable>
-      </p:fieldset>
+          <h:outputLabel value=""></h:outputLabel>
+          <p:commandButton value="Alterar" action="#{carroBean.alterar()}" update="@form"></p:commandButton>
+        </p:panelGrid>
+      </p:fieldset> <br/>
     </h:form>
 </ui:decorate>

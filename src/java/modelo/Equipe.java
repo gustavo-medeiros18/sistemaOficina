@@ -6,9 +6,27 @@ public class Equipe {
   uma Equipe no sistema, o usuario tera que definir
   qual eh id da Equipe, visto que tanto a classe como a
   entidade Equipe possuem apenas um atributo, que eh
-  o seu numero de identificacao (id)*/
-  private int id;
+  o seu numero de identificacao (id). O atributo index
+  eh utilizado como meio de identificacao da equipe para
+  sua alteracao*/
+  private int index, id;
+  
+  public Equipe(int index) {
+    this.setIndex(index);
+  }
+  
+  public Equipe() {
+  
+  }
 
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
+  
   public int getId() {
     return id;
   }

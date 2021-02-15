@@ -24,35 +24,58 @@
 
           <h:outputLabel value="Estado"></h:outputLabel>
           <p:inputText value="#{clienteBean.c.estado}"></p:inputText>
+          
+          <h:outputLabel value=""></h:outputLabel>
+          <p:commandButton value="Adicionar" action="#{clienteBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
+      </p:fieldset>
         
-        <p:toolbar>
-          <p:toolbarGroup>
-            <p:commandButton value="Adicionar" action="#{clienteBean.adicionar()}" update="@form"></p:commandButton>
-          </p:toolbarGroup>
-        </p:toolbar>
+      <p:dataTable value="#{clienteBean.clientes}" var="cliente">
+        <p:column headerText="Índice" sortBy="#{cliente.index}">
+          <h:outputText value="#{cliente.index}"></h:outputText>
+        </p:column>
         
-        <p:dataTable value="#{clienteBean.clientes}" var="cliente">
-          <p:column headerText="Nome" sortBy="#{cliente.nome}">
-            <h:outputText value="#{cliente.nome}"></h:outputText>
-          </p:column>
+        <p:column headerText="Nome" sortBy="#{cliente.nome}">
+          <h:outputText value="#{cliente.nome}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Endereco" sortBy="#{cliente.endereco}">
+          <h:outputText value="#{cliente.endereco}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Cidade" sortBy="#{cliente.cidade}">
+          <h:outputText value="#{cliente.cidade}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Estado" sortBy="#{cliente.estado}">
+          <h:outputText value="#{cliente.estado}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Ações">
+          <p:commandButton action="#{clienteBean.remover(cliente)}" value="Remover" update="@form"></p:commandButton>
+        </p:column>
+      </p:dataTable>
+      
+      <p:fieldset legend="Dados para alterar o cliente (através do índice)">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Índice"></h:outputLabel>
+          <p:inputMask value="#{clienteBean.clienteAlterado.index}"></p:inputMask>
           
-          <p:column headerText="Endereco" sortBy="#{cliente.endereco}">
-            <h:outputText value="#{cliente.endereco}"></h:outputText>
-          </p:column>
+          <h:outputLabel value="Nome"></h:outputLabel>
+          <p:inputMask value="#{clienteBean.clienteAlterado.nome}"></p:inputMask>
+
+          <h:outputLabel value="Endereco"></h:outputLabel>
+          <p:inputText value="#{clienteBean.clienteAlterado.endereco}"></p:inputText>
+
+          <h:outputLabel value="Cidade"></h:outputLabel>
+          <p:inputText value="#{clienteBean.clienteAlterado.cidade}"></p:inputText>
+
+          <h:outputLabel value="Estado"></h:outputLabel>
+          <p:inputText value="#{clienteBean.clienteAlterado.estado}"></p:inputText>
           
-          <p:column headerText="Cidade" sortBy="#{cliente.cidade}">
-            <h:outputText value="#{cliente.cidade}"></h:outputText>
-          </p:column>
-          
-          <p:column headerText="Estado" sortBy="#{cliente.estado}">
-            <h:outputText value="#{cliente.estado}"></h:outputText>
-          </p:column>
-          
-          <p:column headerText="Ações">
-            <p:commandButton action="#{clienteBean.remover(cliente)}" value="Remover" update="@form"></p:commandButton>
-          </p:column>
-        </p:dataTable>
+          <h:outputLabel value=""></h:outputLabel>
+          <p:commandButton value="Alterar" action="#{clienteBean.alterar()}" update="@form"></p:commandButton>
+        </p:panelGrid>
       </p:fieldset>
     </h:form>
 </ui:decorate>

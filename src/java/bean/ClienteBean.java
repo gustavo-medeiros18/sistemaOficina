@@ -11,7 +11,9 @@ import modelo.Cliente;
 @SessionScoped
 
 public class ClienteBean {
-  private Cliente c = new Cliente();
+  private int indexAtual = 0;
+  private Cliente c = new Cliente(0);
+  private Cliente clienteAlterado = new Cliente();
   private List<Cliente> clientes = new ArrayList<>();
   
   public Cliente getC() {
@@ -20,6 +22,14 @@ public class ClienteBean {
 
   public void setC(Cliente c) {
     this.c = c;
+  }
+
+  public Cliente getClienteAlterado() {
+    return clienteAlterado;
+  }
+
+  public void setClienteAlterado(Cliente clienteAlterado) {
+    this.clienteAlterado = clienteAlterado;
   }
 
   public List<Cliente> getClientes() {
@@ -33,9 +43,21 @@ public class ClienteBean {
   public void adicionar() {
     clientes.add(c);
     
+    indexAtual++;
+    
     /*new CarroDao().salvar(c);*/
     
-    c = new Cliente();
+    c = new Cliente(indexAtual);
+  }
+  
+  public void alterar() {
+    for (Cliente cliente : clientes)
+      if (cliente.getIndex() == clienteAlterado.getIndex()) {
+        cliente.setNome(clienteAlterado.getNome());
+        cliente.setCidade(clienteAlterado.getCidade());
+        cliente.setEndereco(clienteAlterado.getEndereco());
+        cliente.setEstado(clienteAlterado.getEstado());
+      }
   }
   
   public void remover(Cliente c) {

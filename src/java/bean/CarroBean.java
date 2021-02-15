@@ -11,7 +11,9 @@ import modelo.Carro;
 @SessionScoped
 
 public class CarroBean {
-  private Carro c = new Carro();
+  private int indexAtual = 0;
+  private Carro c = new Carro(0);
+  private Carro carroAlterado = new Carro();
   private List<Carro> carros = new ArrayList<>();
   
   public Carro getC() {
@@ -22,6 +24,14 @@ public class CarroBean {
     this.c = c;
   }
 
+  public Carro getCarroAlterado() {
+    return carroAlterado;
+  }
+
+  public void setCarroAlterado(Carro carroAlterado) {
+    this.carroAlterado = carroAlterado;
+  }
+  
   public List<Carro> getCarros() {
     return carros;
   }
@@ -33,9 +43,23 @@ public class CarroBean {
   public void adicionar() {
     carros.add(c);
     
+    indexAtual++;
+    
     /*new CarroDao().salvar(c);*/
     
-    c = new Carro();
+    c = new Carro(indexAtual);
+  }
+  
+  public void alterar() {
+    for (Carro carro : carros) {
+      if (carro.getIndex() == carroAlterado.getIndex()) {
+        carro.setPlaca(carroAlterado.getPlaca());
+        carro.setMarca(carroAlterado.getMarca());
+        carro.setModelo(carroAlterado.getModelo());
+        carro.setKm(carroAlterado.getKm());
+        carro.setIdCliente(carroAlterado.getIdCliente());
+      }
+    }
   }
   
   public void remover(Carro c) {
