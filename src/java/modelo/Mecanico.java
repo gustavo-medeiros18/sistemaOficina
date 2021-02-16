@@ -4,8 +4,24 @@ public class Mecanico {
   /*A PK id do mecanico nao sera definida
   como um atributo da classe, pois seu valor
   sera determinado pelo BD, nao pelo usuario*/
+  private int index; /*Indice de identificacao para alterar mecanico*/
   private String nome, cpf, endereco, cidade, estado;
   private int idEquipe;
+
+  public Mecanico(int index) {
+    this.index = index;
+  }
+
+  public Mecanico() {
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
 
   public String getNome() {
     return nome;

@@ -5,9 +5,25 @@ public class OS {
   definida como um atributo da classe,
   pois seu valor sera determinado pelo BD,
   nao pelo usuario*/
+  private int index;
   private String data;
   private String placaCarro;
   private int idCliente, idEquipe;
+
+  public OS() {
+  }
+
+  public OS(int index) {
+    this.index = index;
+  }
+  
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
 
   public String getData() {
     return data;

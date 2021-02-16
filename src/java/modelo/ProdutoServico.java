@@ -9,8 +9,24 @@ public class ProdutoServico {
   definida como um atributo da classe, pois
   ela sera determinada pelo BD, nao pelo
   usuario*/
+  private int index;
   private String nome;
 
+  public ProdutoServico(int index) {
+    this.index = index;
+  }
+
+  public ProdutoServico() {
+  }
+  
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
+  
   public String getNome() {
     return nome;
   }

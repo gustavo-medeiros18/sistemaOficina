@@ -11,7 +11,9 @@ import modelo.OS;
 @SessionScoped
 
 public class OSBean {
-  private OS ordem = new OS();
+  private int indexAtual = 0;
+  private OS ordem = new OS(0);
+  private OS ordemAlterada = new OS();
   private List<OS> ordens = new ArrayList<>();
   
   public OS getOrdem() {
@@ -20,6 +22,14 @@ public class OSBean {
 
   public void setOrdem(OS ordem) {
     this.ordem = ordem;
+  }
+
+  public OS getOrdemAlterada() {
+    return ordemAlterada;
+  }
+
+  public void setOrdemAlterada(OS ordemAlterada) {
+    this.ordemAlterada = ordemAlterada;
   }
 
   public List<OS> getOrdens() {
@@ -35,7 +45,17 @@ public class OSBean {
     
     /*new CarroDao().salvar(c);*/
     
-    ordem = new OS();
+    ordem = new OS(++indexAtual);
+  }
+  
+  public void alterar() {
+    for (OS ordem : ordens)
+      if (ordem.getIndex() == ordemAlterada.getIndex()) {
+        ordem.setData(ordemAlterada.getData());
+        ordem.setPlacaCarro(ordemAlterada.getPlacaCarro());
+        ordem.setIdCliente(ordemAlterada.getIdCliente());
+        ordem.setIdEquipe(ordemAlterada.getIdEquipe());
+      }
   }
   
   public void remover(OS c) {

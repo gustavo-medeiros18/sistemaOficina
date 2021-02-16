@@ -15,23 +15,37 @@
         <p:panelGrid columns="2">
           <h:outputLabel value="Nome"></h:outputLabel>
           <p:inputMask value="#{produtoServicoBean.PS.nome}"></p:inputMask>
-        </p:panelGrid>
-        
-        <p:toolbar>
-          <p:toolbarGroup>
-            <p:commandButton value="Adicionar" action="#{produtoServicoBean.adicionar()}" update="@form"></p:commandButton>
-          </p:toolbarGroup>
-        </p:toolbar>
-        
-        <p:dataTable value="#{produtoServicoBean.listaPS}" var="ps">
-          <p:column headerText="Nome" sortBy="#{ps.nome}">
-            <h:outputText value="#{ps.nome}"></h:outputText>
-          </p:column>
           
-          <p:column headerText="Ações">
-            <p:commandButton action="#{produtoServicoBean.remover(ps)}" value="Remover" update="@form"></p:commandButton>
-          </p:column>
-        </p:dataTable>
+          <h:outputLabel value=""></h:outputLabel>
+          <p:commandButton value="Adicionar" action="#{produtoServicoBean.adicionar()}" update="@form"></p:commandButton>
+        </p:panelGrid>
+      </p:fieldset> <br/>
+      
+      <p:dataTable value="#{produtoServicoBean.listaPS}" var="ps">
+        <p:column headerText="Índice" sortBy="#{ps.index}">
+          <h:outputText value="#{ps.index}"></h:outputText>
+        </p:column>
+        
+        <p:column headerText="Nome" sortBy="#{ps.nome}">
+          <h:outputText value="#{ps.nome}"></h:outputText>
+        </p:column>
+
+        <p:column headerText="Ações">
+          <p:commandButton action="#{produtoServicoBean.remover(ps)}" value="Remover" update="@form"></p:commandButton>
+        </p:column>
+      </p:dataTable> <br/>
+      
+      <p:fieldset legend="Dados para alterar produto/serviço (através do índice)">
+        <p:panelGrid columns="2">
+          <h:outputLabel value="Índice"></h:outputLabel>
+          <p:inputMask value="#{produtoServicoBean.psAlterado.index}"></p:inputMask>
+          
+          <h:outputLabel value="Nome"></h:outputLabel>
+          <p:inputMask value="#{produtoServicoBean.psAlterado.nome}"></p:inputMask>
+          
+          <h:outputLabel value=""></h:outputLabel>
+          <p:commandButton value="Alterar" action="#{produtoServicoBean.alterar()}" update="@form"></p:commandButton>
+        </p:panelGrid>
       </p:fieldset>
     </h:form>
 </ui:decorate>

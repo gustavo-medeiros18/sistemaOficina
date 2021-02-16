@@ -5,7 +5,22 @@ package modelo;
  * as entidades Produto/Servico e OS
  */
 public class OSProdutoServico {
-  private int numeroOS, idProdutoServico;
+  private int index, numeroOS, idProdutoServico;
+
+  public OSProdutoServico(int index) {
+    this.index = index;
+  }
+
+  public OSProdutoServico() {
+  }
+
+  public int getIndex() {
+    return index;
+  }
+
+  public void setIndex(int index) {
+    this.index = index;
+  }
 
   public int getNumeroOS() {
     return numeroOS;

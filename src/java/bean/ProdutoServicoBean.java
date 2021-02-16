@@ -11,7 +11,9 @@ import modelo.ProdutoServico;
 @SessionScoped
 
 public class ProdutoServicoBean {
-  private ProdutoServico ps = new ProdutoServico();
+  private int indexAtual = 0;
+  private ProdutoServico ps = new ProdutoServico(0);
+  private ProdutoServico psAlterado = new ProdutoServico();
   private List<ProdutoServico> listaPS = new ArrayList<>();
   
   public ProdutoServico getPS() {
@@ -20,6 +22,14 @@ public class ProdutoServicoBean {
 
   public void setPS(ProdutoServico ps) {
     this.ps = ps;
+  }
+
+  public ProdutoServico getPsAlterado() {
+    return psAlterado;
+  }
+
+  public void setPsAlterado(ProdutoServico psAlterado) {
+    this.psAlterado = psAlterado;
   }
 
   public List<ProdutoServico> getListaPS() {
@@ -35,7 +45,13 @@ public class ProdutoServicoBean {
     
     /*new CarroDao().salvar(c);*/
     
-    ps = new ProdutoServico();
+    ps = new ProdutoServico(++indexAtual);
+  }
+  
+  public void alterar() {
+    for (ProdutoServico ps : listaPS)
+      if (ps.getIndex() == psAlterado.getIndex())
+        ps.setNome(psAlterado.getNome());
   }
   
   public void remover(ProdutoServico ps) {

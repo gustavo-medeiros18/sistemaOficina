@@ -11,7 +11,9 @@ import modelo.OSProdutoServico;
 @SessionScoped
 
 public class OSPSBean {
-  private OSProdutoServico osps = new OSProdutoServico();
+  private int indexAtual = 0;
+  private OSProdutoServico osps = new OSProdutoServico(0);
+  private OSProdutoServico ospsAlterado = new OSProdutoServico();
   private List<OSProdutoServico> listaOSPS = new ArrayList<>();
   
   public OSProdutoServico getOSPS() {
@@ -20,6 +22,14 @@ public class OSPSBean {
 
   public void setOSPS(OSProdutoServico osps) {
     this.osps = osps;
+  }
+
+  public OSProdutoServico getOspsAlterado() {
+    return ospsAlterado;
+  }
+
+  public void setOspsAlterado(OSProdutoServico ospsAlterado) {
+    this.ospsAlterado = ospsAlterado;
   }
 
   public List<OSProdutoServico> getListaOSPS() {
@@ -35,7 +45,15 @@ public class OSPSBean {
     
     /*new CarroDao().salvar(c);*/
     
-    osps = new OSProdutoServico();
+    osps = new OSProdutoServico(++indexAtual);
+  }
+  
+  public void alterar() {
+    for (OSProdutoServico osps : listaOSPS)
+      if (osps.getIndex() == ospsAlterado.getIndex()) {
+        osps.setNumeroOS(ospsAlterado.getIdProdutoServico());
+        osps.setIdProdutoServico(ospsAlterado.getIdProdutoServico());
+      }
   }
   
   public void remover(OSProdutoServico osps) {
