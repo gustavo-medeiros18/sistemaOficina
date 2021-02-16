@@ -1,4 +1,4 @@
-/*package dao;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,12 +12,13 @@ public class CarroDao {
   public void salvar(Carro carro) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `carro`(`modelo`,`fabricante`,`cor`,`ano`)VALUES(?,?,?,?");
+      PreparedStatement ps = conexao.prepareCall("INSERT INTO `carro`(`placa`, `marca`, `modelo`, `km`, `idCliente`)VALUES(?,?,?,?,?");
       
-      ps.setString(1, carro.getModelo());
-      ps.setString(2, carro.getFabricante());
-      ps.setString(3, carro.getCor());
-      ps.setInt(4, carro.getAno());
+      ps.setString(1, carro.getPlaca());
+      ps.setString(2, carro.getMarca());
+      ps.setString(3, carro.getModelo());
+      ps.setDouble(4, carro.getKm());
+      ps.setInt(5, carro.getIdCliente());
       ps.execute();
       
       FabricaConexao.fecharConexao();
@@ -27,4 +28,4 @@ public class CarroDao {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-}*/
+}

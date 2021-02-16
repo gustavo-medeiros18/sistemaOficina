@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.Carro;
+import dao.CarroDao;
 
 @ManagedBean
 @SessionScoped
@@ -45,9 +46,9 @@ public class CarroBean {
     
     indexAtual++;
     
-    /*new CarroDao().salvar(c);*/
+    new CarroDao().salvar(c);
     
-    c = new Carro(indexAtual);
+//    c = new Carro(indexAtual);
   }
   
   public void alterar() {
