@@ -8,14 +8,14 @@ import java.util.logging.Logger;
 
 public class FabricaConexao {
   private static Connection conexao;
-  private static final String URL_CONEXAO = "jdbc:mysql://localhost/oficina";
+  private static final String URL_CONEXAO = "jdbc:mysql://localhost/oficina?serverTimezone=UTC&useSSL=false";
   private static final String USUARIO = "root";
   private static final String SENHA = "190601";
 
   public static Connection getConexao() {
     if (conexao == null) {
       try {
-        Class.forName("com.mysql.jdbc.driver");
+        Class.forName("com.mysql.jdbc.Driver");
         
         conexao = DriverManager.getConnection(URL_CONEXAO, USUARIO, SENHA);
       }

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.Cliente;
+import dao.ClienteDao;
 
 @ManagedBean
 @SessionScoped
@@ -45,7 +46,7 @@ public class ClienteBean {
     
     indexAtual++;
     
-    /*new CarroDao().salvar(c);*/
+    new ClienteDao().salvar(c);
     
     c = new Cliente(indexAtual);
   }

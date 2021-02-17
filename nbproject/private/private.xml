@@ -3,9 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/src/java/modelo/Mecanico.java</file>
-            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/web/gerenciar-mecanicos.xhtml</file>
-            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/src/java/bean/MecanicoBean.java</file>
+            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/web/index.xhtml</file>
+            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/Gustavo%20Medeiros/Desktop/Projetos-Gustavo/sistemaOficina/src/java/util/FabricaConexao.java</file>
         </group>
     </open-files>
 </project-private>
