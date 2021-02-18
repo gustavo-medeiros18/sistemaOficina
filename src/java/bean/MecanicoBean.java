@@ -1,11 +1,11 @@
 package bean;
 
-/*import dao.CarroDao;*/
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.Mecanico;
+import dao.MecanicoDao;
 
 @ManagedBean
 @SessionScoped
@@ -43,7 +43,7 @@ public class MecanicoBean {
   public void adicionar() {
     mecanicos.add(m);
     
-    /*new CarroDao().salvar(c);*/
+    new MecanicoDao().salvar(m);
     
     m = new Mecanico(++indexAtual);
   }

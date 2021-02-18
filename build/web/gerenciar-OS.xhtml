@@ -16,8 +16,8 @@
           <h:outputLabel value="Data"></h:outputLabel>
           <p:inputMask value="#{oSBean.ordem.data}"></p:inputMask>
 
-          <h:outputLabel value="Placa do carro"></h:outputLabel>
-          <p:inputMask mask="aaa-9999" value="#{oSBean.ordem.placaCarro}"></p:inputMask>
+          <h:outputLabel value="ID Carro"></h:outputLabel>
+          <h:inputText value="#{oSBean.ordem.idCarro}"></h:inputText>
 
           <h:outputLabel value="ID Cliente"></h:outputLabel>
           <p:inputText value="#{oSBean.ordem.idCliente}"></p:inputText>
@@ -39,8 +39,8 @@
           <h:outputText value="#{ordem.data}"></h:outputText>
         </p:column>
 
-        <p:column headerText="Placa do carro" sortBy="#{ordem.placaCarro}">
-          <h:outputText value="#{ordem.placaCarro}"></h:outputText>
+        <p:column headerText="ID Carro" sortBy="#{ordem.idCarro}">
+          <h:outputText value="#{ordem.idCarro}"></h:outputText>
         </p:column>
 
         <p:column headerText="ID Cliente" sortBy="#{ordem.idCliente}">
@@ -64,8 +64,8 @@
           <h:outputLabel value="Data"></h:outputLabel>
           <p:inputMask value="#{oSBean.ordemAlterada.data}"></p:inputMask>
 
-          <h:outputLabel value="Placa do carro"></h:outputLabel>
-          <p:inputMask mask="aaa-9999" value="#{oSBean.ordemAlterada.placaCarro}"></p:inputMask>
+          <h:outputLabel value="ID Carro"></h:outputLabel>
+          <p:inputText value="#{oSBean.ordemAlterada.idCarro}"></p:inputText>
 
           <h:outputLabel value="ID Cliente"></h:outputLabel>
           <p:inputText value="#{oSBean.ordemAlterada.idCliente}"></p:inputText>

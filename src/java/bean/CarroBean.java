@@ -48,7 +48,7 @@ public class CarroBean {
     
     new CarroDao().salvar(c);
     
-//    c = new Carro(indexAtual);
+    /*c = new Carro(indexAtual);*/
   }
   
   public void alterar() {

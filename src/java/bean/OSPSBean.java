@@ -1,11 +1,11 @@
 package bean;
 
-/*import dao.CarroDao;*/
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.OSProdutoServico;
+import dao.OSPSDao;
 
 @ManagedBean
 @SessionScoped
@@ -43,7 +43,7 @@ public class OSPSBean {
   public void adicionar() {
     listaOSPS.add(osps);
     
-    /*new CarroDao().salvar(c);*/
+    new OSPSDao().salvar(osps);
     
     osps = new OSProdutoServico(++indexAtual);
   }

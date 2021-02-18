@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.OS;
+import dao.OSDao;
 
 @ManagedBean
 @SessionScoped
@@ -43,7 +44,7 @@ public class OSBean {
   public void adicionar() {
     ordens.add(ordem);
     
-    /*new CarroDao().salvar(c);*/
+    new OSDao().salvar(ordem);
     
     ordem = new OS(++indexAtual);
   }
@@ -52,7 +53,7 @@ public class OSBean {
     for (OS ordem : ordens)
       if (ordem.getIndex() == ordemAlterada.getIndex()) {
         ordem.setData(ordemAlterada.getData());
-        ordem.setPlacaCarro(ordemAlterada.getPlacaCarro());
+        ordem.setIdCarro(ordemAlterada.getIdCarro());
         ordem.setIdCliente(ordemAlterada.getIdCliente());
         ordem.setIdEquipe(ordemAlterada.getIdEquipe());
       }

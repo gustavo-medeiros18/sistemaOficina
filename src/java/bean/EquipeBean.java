@@ -1,11 +1,11 @@
 package bean;
 
-/*import dao.CarroDao;*/
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.Equipe;
+import dao.EquipeDao;
 
 @ManagedBean
 @SessionScoped
@@ -45,7 +45,7 @@ public class EquipeBean {
     
     indexAtual++;
     
-    /*new CarroDao().salvar(c);*/
+    new EquipeDao().salvar(e);
     
     e = new Equipe(indexAtual);
   }

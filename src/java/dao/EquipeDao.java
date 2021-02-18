@@ -5,20 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Carro;
+import modelo.Equipe;
 import util.FabricaConexao;
 
-public class CarroDao {
-  public void salvar(Carro carro) {
+public class EquipeDao {
+  public void salvar(Equipe equipe) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`carro`(`placa`,`marca`,`modelo`,`km`,`idCliente`)VALUES(?,?,?,?,?)");
+      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`equipe`(`id`)VALUES(?)");
       
-      ps.setString(1, carro.getPlaca());
-      ps.setString(2, carro.getMarca());
-      ps.setString(3, carro.getModelo());
-      ps.setDouble(4, carro.getKm());
-      ps.setInt(5, carro.getIdCliente());
+      ps.setInt(1, equipe.getId());
       ps.execute();
       
       FabricaConexao.fecharConexao();

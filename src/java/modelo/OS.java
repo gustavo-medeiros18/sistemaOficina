@@ -7,8 +7,7 @@ public class OS {
   nao pelo usuario*/
   private int index;
   private String data;
-  private String placaCarro;
-  private int idCliente, idEquipe;
+  private int idCarro, idCliente, idEquipe;
 
   public OS() {
   }
@@ -33,12 +32,12 @@ public class OS {
     this.data = data;
   }
 
-  public String getPlacaCarro() {
-    return placaCarro;
+  public int getIdCarro() {
+    return idCarro;
   }
 
-  public void setPlacaCarro(String placaCarro) {
-    this.placaCarro = placaCarro;
+  public void setIdCarro(int idCarro) {
+    this.idCarro = idCarro;
   }
 
   public int getIdCliente() {

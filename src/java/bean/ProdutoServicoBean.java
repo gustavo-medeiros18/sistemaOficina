@@ -1,11 +1,11 @@
 package bean;
 
-/*import dao.CarroDao;*/
 import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import modelo.ProdutoServico;
+import dao.ProdutoServicoDao;
 
 @ManagedBean
 @SessionScoped
@@ -43,7 +43,7 @@ public class ProdutoServicoBean {
   public void adicionar() {
     listaPS.add(ps);
     
-    /*new CarroDao().salvar(c);*/
+    new ProdutoServicoDao().salvar(ps);
     
     ps = new ProdutoServico(++indexAtual);
   }
