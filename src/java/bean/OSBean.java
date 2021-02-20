@@ -16,6 +16,7 @@ public class OSBean {
   private OS ordem = new OS(0);
   private OS ordemAlterada = new OS();
   private List<OS> ordens = new ArrayList<>();
+  private OSDao osdao = new OSDao();
   
   public OS getOrdem() {
     return ordem;
@@ -42,11 +43,16 @@ public class OSBean {
   }
   
   public void adicionar() {
-    ordens.add(ordem);
+    /*ordens.add(ordem);*/
     
-    new OSDao().salvar(ordem);
+    osdao.salvar(ordem);
     
-    ordem = new OS(++indexAtual);
+    ordem = new OS();
+    this.listar();
+  }
+  
+  public void listar() {
+    ordens = osdao.buscar();
   }
   
   public void alterar() {

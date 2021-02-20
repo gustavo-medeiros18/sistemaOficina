@@ -1,10 +1,7 @@
 package modelo;
 
 public class Cliente {
-  /*A PK id do cliente nao sera
-  definida como um atributo da classe,
-  pois seu valor sera determinado pelo BD,
-  nao pelo usuario*/
+  private Integer id;
   private int index; /*Indice de identificacao para alterar*/
   private String nome, endereco, cidade, estado;
 
@@ -14,6 +11,14 @@ public class Cliente {
   
   public Cliente() {
   
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public int getIndex() {

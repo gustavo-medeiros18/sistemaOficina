@@ -15,6 +15,7 @@ public class ProdutoServicoBean {
   private ProdutoServico ps = new ProdutoServico(0);
   private ProdutoServico psAlterado = new ProdutoServico();
   private List<ProdutoServico> listaPS = new ArrayList<>();
+  private ProdutoServicoDao psdao = new ProdutoServicoDao();
   
   public ProdutoServico getPS() {
     return ps;
@@ -41,11 +42,16 @@ public class ProdutoServicoBean {
   }
   
   public void adicionar() {
-    listaPS.add(ps);
+    /*listaPS.add(ps);*/
     
-    new ProdutoServicoDao().salvar(ps);
+    psdao.salvar(ps);
     
-    ps = new ProdutoServico(++indexAtual);
+    ps = new ProdutoServico();
+    this.listar();
+  }
+  
+  public void listar() {
+    listaPS = psdao.buscar();
   }
   
   public void alterar() {

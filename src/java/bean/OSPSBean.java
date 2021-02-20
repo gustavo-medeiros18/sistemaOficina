@@ -15,6 +15,7 @@ public class OSPSBean {
   private OSProdutoServico osps = new OSProdutoServico(0);
   private OSProdutoServico ospsAlterado = new OSProdutoServico();
   private List<OSProdutoServico> listaOSPS = new ArrayList<>();
+  private OSPSDao ospsDao = new OSPSDao();
   
   public OSProdutoServico getOSPS() {
     return osps;
@@ -41,11 +42,16 @@ public class OSPSBean {
   }
   
   public void adicionar() {
-    listaOSPS.add(osps);
+    /*listaOSPS.add(osps);*/
     
-    new OSPSDao().salvar(osps);
+    ospsDao.salvar(osps);
     
-    osps = new OSProdutoServico(++indexAtual);
+    osps = new OSProdutoServico();
+    this.listar();
+  }
+  
+  public void listar() {
+    listaOSPS = ospsDao.buscar();
   }
   
   public void alterar() {

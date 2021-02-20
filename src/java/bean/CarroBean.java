@@ -16,6 +16,7 @@ public class CarroBean {
   private Carro c = new Carro(0);
   private Carro carroAlterado = new Carro();
   private List<Carro> carros = new ArrayList<>();
+  private CarroDao carrodao= new CarroDao(); 
   
   public Carro getC() {
     return c;
@@ -42,13 +43,16 @@ public class CarroBean {
   }
   
   public void adicionar() {
-    carros.add(c);
+    /*carros.add(c);*/
+   
+    carrodao.salvar(c);
     
-    indexAtual++;
-    
-    new CarroDao().salvar(c);
-    
-    /*c = new Carro(indexAtual);*/
+    c = new Carro();
+    this.listar();
+  }
+  
+  public void listar() {
+    carros = carrodao.buscar();
   }
   
   public void alterar() {

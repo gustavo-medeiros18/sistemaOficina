@@ -2,7 +2,10 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Mecanico;
@@ -27,6 +30,38 @@ public class MecanicoDao {
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  public List<Mecanico> buscar() {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("select * from oficina.mecanico");
+      ResultSet resultSet = ps.executeQuery();
+      
+      List<Mecanico> mecanicos = new ArrayList<>();
+      
+      while (resultSet.next()) {
+        Mecanico mecanico = new Mecanico();
+        
+        mecanico.setId(resultSet.getInt("id"));
+        mecanico.setNome(resultSet.getString("nome"));
+        mecanico.setCpf(resultSet.getString("cpf"));
+        mecanico.setEndereco(resultSet.getString("endereco"));
+        mecanico.setCidade(resultSet.getString("cidade"));
+        mecanico.setEstado(resultSet.getString("estado"));
+        mecanico.setIdEquipe(resultSet.getInt("idEquipe"));
+        
+        mecanicos.add(mecanico);
+      }
+      
+      return mecanicos;
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      
+      return null;
     }
   }
 }

@@ -15,6 +15,7 @@ public class EquipeBean {
   private Equipe e = new Equipe(0);
   private Equipe equipeAlterada = new Equipe();
   private List<Equipe> equipes = new ArrayList<>();
+  private EquipeDao equipedao = new EquipeDao();
   
   public Equipe getE() {
     return e;
@@ -41,13 +42,16 @@ public class EquipeBean {
   }
   
   public void adicionar() {
-    equipes.add(e);
+    /*equipes.add(e);*/
     
-    indexAtual++;
+    equipedao.salvar(e);
     
-    new EquipeDao().salvar(e);
-    
-    e = new Equipe(indexAtual);
+    e = new Equipe();
+    this.listar();
+  }
+  
+  public void listar() {
+    equipes = equipedao.buscar();
   }
   
   public void alterar() {

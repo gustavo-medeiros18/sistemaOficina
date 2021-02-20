@@ -16,6 +16,7 @@ public class ClienteBean {
   private Cliente c = new Cliente(0);
   private Cliente clienteAlterado = new Cliente();
   private List<Cliente> clientes = new ArrayList<>();
+  private ClienteDao clientedao = new ClienteDao();
   
   public Cliente getC() {
     return c;
@@ -42,13 +43,16 @@ public class ClienteBean {
   }
   
   public void adicionar() {
-    clientes.add(c);
+    /*clientes.add(c);*/
     
-    indexAtual++;
+    clientedao.salvar(c);
     
-    new ClienteDao().salvar(c);
-    
-    c = new Cliente(indexAtual);
+    c = new Cliente();
+    this.listar();
+  }
+  
+  public void listar() {
+    clientes = clientedao.buscar();
   }
   
   public void alterar() {

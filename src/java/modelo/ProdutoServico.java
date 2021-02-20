@@ -5,10 +5,7 @@ package modelo;
  * armazenara os dados de produtos e/ou servicos da oficina.
  */
 public class ProdutoServico {
-  /*A PK id de Produto/Servico nao sera
-  definida como um atributo da classe, pois
-  ela sera determinada pelo BD, nao pelo
-  usuario*/
+  private Integer id;
   private int index;
   private String nome;
 
@@ -17,6 +14,14 @@ public class ProdutoServico {
   }
 
   public ProdutoServico() {
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
   
   public int getIndex() {

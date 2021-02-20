@@ -24,6 +24,12 @@
         </p:panelGrid>
       </p:fieldset> <br/>
       
+      <p:toolbar>
+        <p:toolbarGroup>
+          <p:commandButton value="Listar" action="#{oSPSBean.listar()}" update="@form"></p:commandButton>
+        </p:toolbarGroup>
+      </p:toolbar>
+      
       <p:dataTable value="#{oSPSBean.listaOSPS}" var="osps">
         <p:column headerText="Índice" sortBy="#{osps.index}">
           <h:outputText value="#{osps.index}"></h:outputText>

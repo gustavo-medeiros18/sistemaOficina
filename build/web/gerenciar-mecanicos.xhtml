@@ -35,10 +35,20 @@
           <p:commandButton value="Adicionar" action="#{mecanicoBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
       </p:fieldset> <br/>
+      
+      <p:toolbar>
+        <p:toolbarGroup>
+          <p:commandButton value="Listar" action="#{mecanicoBean.listar()}" update="@form"></p:commandButton>
+        </p:toolbarGroup>
+      </p:toolbar>
 
       <p:dataTable value="#{mecanicoBean.mecanicos}" var="mecanico">
         <p:column headerText="Índice" sortBy="#{mecanico.index}">
           <h:outputText value="#{mecanico.index}"></h:outputText>
+        </p:column>
+        
+        <p:column headerText="ID" sortBy="#{mecanico.id}">
+          <h:outputText value="#{mecanico.id}"></h:outputText>
         </p:column>
         
         <p:column headerText="Nome" sortBy="#{mecanico.nome}">

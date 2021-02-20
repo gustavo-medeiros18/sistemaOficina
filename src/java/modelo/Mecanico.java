@@ -1,9 +1,7 @@
 package modelo;
 
 public class Mecanico {
-  /*A PK id do mecanico nao sera definida
-  como um atributo da classe, pois seu valor
-  sera determinado pelo BD, nao pelo usuario*/
+  private Integer id;
   private int index; /*Indice de identificacao para alterar mecanico*/
   private String nome, cpf, endereco, cidade, estado;
   private int idEquipe;
@@ -13,6 +11,14 @@ public class Mecanico {
   }
 
   public Mecanico() {
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public int getIndex() {

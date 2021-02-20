@@ -32,10 +32,20 @@
           <p:commandButton value="Adicionar" action="#{carroBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
       </p:fieldset> <br/>
+      
+      <p:toolbar>
+        <p:toolbarGroup>
+          <p:commandButton value="Listar" action="#{carroBean.listar()}" update="@form"></p:commandButton>
+        </p:toolbarGroup>
+      </p:toolbar>
         
       <p:dataTable value="#{carroBean.carros}" var="carro">
         <p:column headerText="Índice" sortBy="#{carro.index}">
           <h:outputText value="#{carro.index}"></h:outputText>
+        </p:column>
+        
+        <p:column headerText="ID" sortBy="#{carro.id}">
+          <h:outputText value="#{carro.id}"></h:outputText>
         </p:column>
 
         <p:column headerText="Placa" sortBy="#{carro.placa}">

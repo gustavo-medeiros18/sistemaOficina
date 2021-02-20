@@ -20,6 +20,12 @@
           <p:commandButton value="Adicionar" action="#{equipeBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
       </p:fieldset>
+      
+      <p:toolbar>
+        <p:toolbarGroup>
+          <p:commandButton value="Listar" action="#{equipeBean.listar()}" update="@form"></p:commandButton>
+        </p:toolbarGroup>
+      </p:toolbar>
 
       <p:dataTable value="#{equipeBean.equipes}" var="equipe">
         <p:column headerText="Índice" sortBy="#{equipe.index}">

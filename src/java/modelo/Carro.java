@@ -1,10 +1,9 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Carro {
-  /*A PK id do carro nao sera
-  definida como um atributo da classe,
-  pois seu valor sera determinado pelo BD,
-  nao pelo usuario*/
+  private Integer id;
   private int index; /*Indice de identificacao, para alterar o carro*/
   private String placa, marca, modelo;
   private Double km;
@@ -16,6 +15,14 @@ public class Carro {
   
   public Carro(int index) {
     this.setIndex(index);
+  }
+
+  public Integer getId() {
+    return id;
+  }
+
+  public void setId(Integer id) {
+    this.id = id;
   }
 
   public int getIndex() {
@@ -64,5 +71,31 @@ public class Carro {
 
   public void setIdCliente(int idCliente) {
     this.idCliente = idCliente;
+  }
+
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 89 * hash + Objects.hashCode(this.id);
+    
+    return hash;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (getClass() != obj.getClass()) {
+      return false;
+    }
+    
+    final Carro other = (Carro) obj;
+    
+    if (!Objects.equals(this.id, other.id)) {
+      return false;
+    }
+    
+    return true;
   }
 }

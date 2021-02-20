@@ -15,6 +15,7 @@ public class MecanicoBean {
   private Mecanico m = new Mecanico(0);
   private Mecanico mecanicoAlterado = new Mecanico();
   private List<Mecanico> mecanicos = new ArrayList<>();
+  private MecanicoDao mecanicodao = new MecanicoDao();
   
   public Mecanico getM() {
     return m;
@@ -41,11 +42,16 @@ public class MecanicoBean {
   }
   
   public void adicionar() {
-    mecanicos.add(m);
+    /*mecanicos.add(m);*/
     
-    new MecanicoDao().salvar(m);
+    mecanicodao.salvar(m);
     
-    m = new Mecanico(++indexAtual);
+    m = new Mecanico();
+    this.listar();
+  }
+  
+  public void listar() {
+    mecanicos = mecanicodao.buscar();
   }
   
   public void alterar() {

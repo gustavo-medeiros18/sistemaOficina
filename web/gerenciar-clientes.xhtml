@@ -29,10 +29,20 @@
           <p:commandButton value="Adicionar" action="#{clienteBean.adicionar()}" update="@form"></p:commandButton>
         </p:panelGrid>
       </p:fieldset>
+      
+      <p:toolbar>
+        <p:toolbarGroup>
+          <p:commandButton value="Listar" action="#{clienteBean.listar()}" update="@form"></p:commandButton>
+        </p:toolbarGroup>
+      </p:toolbar>
         
       <p:dataTable value="#{clienteBean.clientes}" var="cliente">
         <p:column headerText="Índice" sortBy="#{cliente.index}">
           <h:outputText value="#{cliente.index}"></h:outputText>
+        </p:column>
+        
+        <p:column headerText="ID" sortBy="#{cliente.id}">
+          <h:outputText value="#{cliente.id}"></h:outputText>
         </p:column>
         
         <p:column headerText="Nome" sortBy="#{cliente.nome}">

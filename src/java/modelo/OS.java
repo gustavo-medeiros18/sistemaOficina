@@ -1,10 +1,7 @@
 package modelo;
 
 public class OS {
-  /*A PK numero da OS nao sera
-  definida como um atributo da classe,
-  pois seu valor sera determinado pelo BD,
-  nao pelo usuario*/
+  private Integer numero;
   private int index;
   private String data;
   private int idCarro, idCliente, idEquipe;
@@ -14,6 +11,14 @@ public class OS {
 
   public OS(int index) {
     this.index = index;
+  }
+
+  public Integer getNumero() {
+    return numero;
+  }
+
+  public void setNumero(Integer numero) {
+    this.numero = numero;
   }
   
   public int getIndex() {
