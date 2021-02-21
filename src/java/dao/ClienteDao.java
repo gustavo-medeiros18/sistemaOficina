@@ -15,7 +15,15 @@ public class ClienteDao {
   public void salvar(Cliente cliente) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`cliente`(`nome`,`endereco`,`cidade`,`estado`)VALUES(?,?,?,?)");
+      PreparedStatement ps; 
+      
+      if (cliente.getId() == null)
+        ps= conexao.prepareCall("INSERT INTO `oficina`.`cliente`(`nome`,`endereco`,`cidade`,`estado`)VALUES(?,?,?,?)");
+      else {
+        ps = conexao.prepareStatement("UPDATE oficina.cliente SET nome = ?, endereco = ?, cidade = ?, estado = ? WHERE id = ?;");
+        
+        ps.setInt(5, cliente.getId());
+      }
       
       ps.setString(1, cliente.getNome());
       ps.setString(2, cliente.getEndereco());

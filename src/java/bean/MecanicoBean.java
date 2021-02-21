@@ -11,8 +11,7 @@ import dao.MecanicoDao;
 @SessionScoped
 
 public class MecanicoBean {
-  private int indexAtual = 0;
-  private Mecanico m = new Mecanico(0);
+  private Mecanico m = new Mecanico();
   private Mecanico mecanicoAlterado = new Mecanico();
   private List<Mecanico> mecanicos = new ArrayList<>();
   private MecanicoDao mecanicodao = new MecanicoDao();
@@ -42,28 +41,18 @@ public class MecanicoBean {
   }
   
   public void adicionar() {
-    /*mecanicos.add(m);*/
-    
     mecanicodao.salvar(m);
     
     m = new Mecanico();
     this.listar();
   }
   
-  public void listar() {
-    mecanicos = mecanicodao.buscar();
+  public void editar(Mecanico mecanico) {
+    this.m = mecanico;
   }
   
-  public void alterar() {
-    for (Mecanico mecanico : mecanicos)
-      if (mecanico.getIndex() == mecanicoAlterado.getIndex()) {
-        mecanico.setNome(mecanicoAlterado.getNome());
-        mecanico.setCpf(mecanicoAlterado.getCpf());
-        mecanico.setEndereco(mecanicoAlterado.getEndereco());
-        mecanico.setCidade(mecanicoAlterado.getCidade());
-        mecanico.setEstado(mecanicoAlterado.getEstado());
-        mecanico.setIdEquipe(mecanicoAlterado.getIdEquipe());
-      }
+  public void listar() {
+    mecanicos = mecanicodao.buscar();
   }
   
   public void remover(Mecanico m) {

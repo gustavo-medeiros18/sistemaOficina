@@ -15,8 +15,16 @@ public class CarroDao {
   public void salvar(Carro carro) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareStatement("INSERT INTO `oficina`.`carro`(`placa`,`marca`,`modelo`,`km`,`idCliente`)VALUES(?,?,?,?,?)");
+      PreparedStatement ps;
       
+      if (carro.getId() == null)
+        ps = conexao.prepareStatement("INSERT INTO `oficina`.`carro`(`placa`,`marca`,`modelo`,`km`,`idCliente`)VALUES(?,?,?,?,?)");
+      else {
+        ps = conexao.prepareStatement("update carro set placa=?, marca=?, modelo=?, km=?, idCliente=? where id=?");
+        
+        ps.setInt(6, carro.getId());
+      }
+        
       ps.setString(1, carro.getPlaca());
       ps.setString(2, carro.getMarca());
       ps.setString(3, carro.getModelo());

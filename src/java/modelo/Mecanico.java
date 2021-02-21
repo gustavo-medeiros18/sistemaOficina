@@ -2,13 +2,8 @@ package modelo;
 
 public class Mecanico {
   private Integer id;
-  private int index; /*Indice de identificacao para alterar mecanico*/
   private String nome, cpf, endereco, cidade, estado;
   private int idEquipe;
-
-  public Mecanico(int index) {
-    this.index = index;
-  }
 
   public Mecanico() {
   }
@@ -19,14 +14,6 @@ public class Mecanico {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public int getIndex() {
-    return index;
-  }
-
-  public void setIndex(int index) {
-    this.index = index;
   }
 
   public String getNome() {

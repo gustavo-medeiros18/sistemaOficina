@@ -15,7 +15,15 @@ public class OSDao {
   public void salvar(OS ordem) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`os`(`data`,`idCarro`,`idCliente`,`idEquipe`)VALUES(?,?,?,?)");
+      PreparedStatement ps;
+      
+      if (ordem.getNumero() == null)
+        ps = conexao.prepareCall("INSERT INTO `oficina`.`os`(`data`,`idCarro`,`idCliente`,`idEquipe`)VALUES(?,?,?,?)");
+      else {
+        ps = conexao.prepareStatement("UPDATE `oficina`.`os` SET data = ?, idCarro = ?, idCliente = ?, idEquipe = ? WHERE numero = ?");
+        
+        ps.setInt(5, ordem.getNumero());
+      }
       
       ps.setString(1, ordem.getData());
       ps.setInt(2, ordem.getIdCarro());

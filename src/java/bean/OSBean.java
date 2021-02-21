@@ -12,8 +12,7 @@ import dao.OSDao;
 @SessionScoped
 
 public class OSBean {
-  private int indexAtual = 0;
-  private OS ordem = new OS(0);
+  private OS ordem = new OS();
   private OS ordemAlterada = new OS();
   private List<OS> ordens = new ArrayList<>();
   private OSDao osdao = new OSDao();
@@ -43,26 +42,18 @@ public class OSBean {
   }
   
   public void adicionar() {
-    /*ordens.add(ordem);*/
-    
     osdao.salvar(ordem);
     
     ordem = new OS();
     this.listar();
   }
   
-  public void listar() {
-    ordens = osdao.buscar();
+  public void Editar(OS os) {
+    this.ordem = os;
   }
   
-  public void alterar() {
-    for (OS ordem : ordens)
-      if (ordem.getIndex() == ordemAlterada.getIndex()) {
-        ordem.setData(ordemAlterada.getData());
-        ordem.setIdCarro(ordemAlterada.getIdCarro());
-        ordem.setIdCliente(ordemAlterada.getIdCliente());
-        ordem.setIdEquipe(ordemAlterada.getIdEquipe());
-      }
+  public void listar() {
+    ordens = osdao.buscar();
   }
   
   public void remover(OS c) {

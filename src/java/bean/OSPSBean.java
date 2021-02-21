@@ -11,8 +11,7 @@ import dao.OSPSDao;
 @SessionScoped
 
 public class OSPSBean {
-  private int indexAtual = 0;
-  private OSProdutoServico osps = new OSProdutoServico(0);
+  private OSProdutoServico osps = new OSProdutoServico();
   private OSProdutoServico ospsAlterado = new OSProdutoServico();
   private List<OSProdutoServico> listaOSPS = new ArrayList<>();
   private OSPSDao ospsDao = new OSPSDao();
@@ -42,24 +41,18 @@ public class OSPSBean {
   }
   
   public void adicionar() {
-    /*listaOSPS.add(osps);*/
-    
     ospsDao.salvar(osps);
     
     osps = new OSProdutoServico();
     this.listar();
   }
   
-  public void listar() {
-    listaOSPS = ospsDao.buscar();
+  public void editar(OSProdutoServico osps) {
+    this.osps = osps;
   }
   
-  public void alterar() {
-    for (OSProdutoServico osps : listaOSPS)
-      if (osps.getIndex() == ospsAlterado.getIndex()) {
-        osps.setNumeroOS(ospsAlterado.getIdProdutoServico());
-        osps.setIdProdutoServico(ospsAlterado.getIdProdutoServico());
-      }
+  public void listar() {
+    listaOSPS = ospsDao.buscar();
   }
   
   public void remover(OSProdutoServico osps) {

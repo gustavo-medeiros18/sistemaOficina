@@ -27,31 +27,14 @@
         </p:toolbarGroup>
       </p:toolbar>
 
-      <p:dataTable value="#{equipeBean.equipes}" var="equipe">
-        <p:column headerText="Índice" sortBy="#{equipe.index}">
-          <h:outputText value="#{equipe.index}"></h:outputText>
-        </p:column>
-        
+      <p:dataTable value="#{equipeBean.equipes}" var="equipe">        
         <p:column headerText="ID Equipe" sortBy="#{equipe.id}">
           <h:outputText value="#{equipe.id}"></h:outputText>
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{equipeBean.remover(equipe)}" value="Remover" update="@form"></p:commandButton>
+          <p:commandButton action="#{equipeBean.editar(equipe)}" value="Editar" update="@form"></p:commandButton>
         </p:column>
       </p:dataTable>
-      
-      <p:fieldset legend="Dados para alterar equipe (através do índice)">
-        <p:panelGrid columns="2">          
-          <h:outputLabel value="Índice"></h:outputLabel>
-          <p:inputMask value="#{equipeBean.equipeAlterada.index}"></p:inputMask>
-          
-          <h:outputLabel value="ID Equipe"></h:outputLabel>
-          <p:inputMask value="#{equipeBean.equipeAlterada.id}"></p:inputMask>
-          
-          <h:outputLabel value=""></h:outputLabel>
-          <p:commandButton value="Alterar" action="#{equipeBean.alterar()}" update="@form"></p:commandButton>
-        </p:panelGrid>
-      </p:fieldset>
     </h:form>
 </ui:decorate>

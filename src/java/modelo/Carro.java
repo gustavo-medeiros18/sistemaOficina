@@ -4,17 +4,12 @@ import java.util.Objects;
 
 public class Carro {
   private Integer id;
-  private int index; /*Indice de identificacao, para alterar o carro*/
   private String placa, marca, modelo;
   private Double km;
   private int idCliente;
    
   public Carro() {
   
-  }
-  
-  public Carro(int index) {
-    this.setIndex(index);
   }
 
   public Integer getId() {
@@ -23,14 +18,6 @@ public class Carro {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public int getIndex() {
-    return index;
-  }
-
-  public void setIndex(int index) {
-    this.index = index;
   }
 
   public String getPlaca() {

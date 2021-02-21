@@ -2,12 +2,7 @@ package modelo;
 
 public class Cliente {
   private Integer id;
-  private int index; /*Indice de identificacao para alterar*/
   private String nome, endereco, cidade, estado;
-
-  public Cliente(int index) {
-    this.setIndex(index);
-  }
   
   public Cliente() {
   
@@ -19,14 +14,6 @@ public class Cliente {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public int getIndex() {
-    return index;
-  }
-
-  public void setIndex(int index) {
-    this.index = index;
   }
   
   public String getNome() {

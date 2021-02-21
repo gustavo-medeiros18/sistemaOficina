@@ -11,8 +11,7 @@ import dao.ProdutoServicoDao;
 @SessionScoped
 
 public class ProdutoServicoBean {
-  private int indexAtual = 0;
-  private ProdutoServico ps = new ProdutoServico(0);
+  private ProdutoServico ps = new ProdutoServico();
   private ProdutoServico psAlterado = new ProdutoServico();
   private List<ProdutoServico> listaPS = new ArrayList<>();
   private ProdutoServicoDao psdao = new ProdutoServicoDao();
@@ -42,22 +41,18 @@ public class ProdutoServicoBean {
   }
   
   public void adicionar() {
-    /*listaPS.add(ps);*/
-    
     psdao.salvar(ps);
     
     ps = new ProdutoServico();
     this.listar();
   }
   
-  public void listar() {
-    listaPS = psdao.buscar();
+  public void editar(ProdutoServico ps) {
+    this.ps = ps;
   }
   
-  public void alterar() {
-    for (ProdutoServico ps : listaPS)
-      if (ps.getIndex() == psAlterado.getIndex())
-        ps.setNome(psAlterado.getNome());
+  public void listar() {
+    listaPS = psdao.buscar();
   }
   
   public void remover(ProdutoServico ps) {

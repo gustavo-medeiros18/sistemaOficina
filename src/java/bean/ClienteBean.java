@@ -12,8 +12,7 @@ import dao.ClienteDao;
 @SessionScoped
 
 public class ClienteBean {
-  private int indexAtual = 0;
-  private Cliente c = new Cliente(0);
+  private Cliente c = new Cliente();
   private Cliente clienteAlterado = new Cliente();
   private List<Cliente> clientes = new ArrayList<>();
   private ClienteDao clientedao = new ClienteDao();
@@ -43,26 +42,18 @@ public class ClienteBean {
   }
   
   public void adicionar() {
-    /*clientes.add(c);*/
-    
     clientedao.salvar(c);
     
     c = new Cliente();
     this.listar();
   }
   
-  public void listar() {
-    clientes = clientedao.buscar();
+  public void editar(Cliente c) {
+    this.c = c;
   }
   
-  public void alterar() {
-    for (Cliente cliente : clientes)
-      if (cliente.getIndex() == clienteAlterado.getIndex()) {
-        cliente.setNome(clienteAlterado.getNome());
-        cliente.setCidade(clienteAlterado.getCidade());
-        cliente.setEndereco(clienteAlterado.getEndereco());
-        cliente.setEstado(clienteAlterado.getEstado());
-      }
+  public void listar() {
+    clientes = clientedao.buscar();
   }
   
   public void remover(Cliente c) {

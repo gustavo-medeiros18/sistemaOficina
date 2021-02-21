@@ -11,8 +11,7 @@ import dao.EquipeDao;
 @SessionScoped
 
 public class EquipeBean {
-  private int indexAtual = 0;
-  private Equipe e = new Equipe(0);
+  private Equipe e = new Equipe();
   private Equipe equipeAlterada = new Equipe();
   private List<Equipe> equipes = new ArrayList<>();
   private EquipeDao equipedao = new EquipeDao();
@@ -42,22 +41,18 @@ public class EquipeBean {
   }
   
   public void adicionar() {
-    /*equipes.add(e);*/
-    
     equipedao.salvar(e);
     
     e = new Equipe();
     this.listar();
   }
   
-  public void listar() {
-    equipes = equipedao.buscar();
+  public void editar(Equipe e) {
+    this.e = e;
   }
   
-  public void alterar() {
-    for (Equipe equipe : equipes)
-      if (equipe.getIndex() == equipeAlterada.getIndex())
-        equipe.setId(equipeAlterada.getId());
+  public void listar() {
+    equipes = equipedao.buscar();
   }
   
   public void remover(Equipe e) {

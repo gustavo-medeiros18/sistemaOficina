@@ -15,7 +15,15 @@ public class MecanicoDao {
   public void salvar(Mecanico mecanico) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`mecanico`(`nome`,`cpf`,`endereco`,`cidade`,`estado`,`idEquipe`)VALUES(?,?,?,?,?,?)");
+      PreparedStatement ps; 
+      
+      if (mecanico.getId() == null)
+        ps = conexao.prepareCall("INSERT INTO `oficina`.`mecanico`(`nome`,`cpf`,`endereco`,`cidade`,`estado`,`idEquipe`)VALUES(?,?,?,?,?,?)");
+      else {
+        ps = conexao.prepareCall("UPDATE `oficina`.`mecanico` SET nome = ?, cpf = ?, endereco = ?, cidade = ?, estado = ?, idEquipe = ? WHERE id = ?");
+        
+        ps.setInt(7, mecanico.getId());
+      }
       
       ps.setString(1, mecanico.getNome());
       ps.setString(2, mecanico.getCpf());

@@ -31,10 +31,6 @@
       </p:toolbar>
       
       <p:dataTable value="#{oSPSBean.listaOSPS}" var="osps">
-        <p:column headerText="Índice" sortBy="#{osps.index}">
-          <h:outputText value="#{osps.index}"></h:outputText>
-        </p:column>
-        
         <p:column headerText="Número OS" sortBy="#{osps.numeroOS}">
           <h:outputText value="#{osps.numeroOS}"></h:outputText>
         </p:column>
@@ -44,24 +40,8 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{oSPSBean.remover(osps)}" value="Remover" update="@form"></p:commandButton>
+          <p:commandButton action="#{oSPSBean.editar(osps)}" value="Alterar" update="@form"></p:commandButton>
         </p:column>
       </p:dataTable> <br/>
-      
-      <p:fieldset legend="Dados para alterar OS-Produto/Serviço (Através do índice)">
-        <p:panelGrid columns="2">
-          <h:outputLabel value="Índice"></h:outputLabel>
-          <p:inputMask value="#{oSPSBean.ospsAlterado.index}"></p:inputMask>
-          
-          <h:outputLabel value="Número OS"></h:outputLabel>
-          <p:inputMask value="#{oSPSBean.ospsAlterado.numeroOS}"></p:inputMask>
-          
-          <h:outputLabel value="ID Produto/Serviço"></h:outputLabel>
-          <p:inputMask value="#{oSPSBean.ospsAlterado.idProdutoServico}"></p:inputMask>
-          
-          <h:outputLabel value=""></h:outputLabel>
-          <p:commandButton value="Alterar" action="#{oSPSBean.alterar()}" update="@form"></p:commandButton>
-        </p:panelGrid>
-      </p:fieldset>
     </h:form>
 </ui:decorate>

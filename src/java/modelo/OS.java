@@ -2,15 +2,10 @@ package modelo;
 
 public class OS {
   private Integer numero;
-  private int index;
   private String data;
   private int idCarro, idCliente, idEquipe;
 
   public OS() {
-  }
-
-  public OS(int index) {
-    this.index = index;
   }
 
   public Integer getNumero() {
@@ -19,14 +14,6 @@ public class OS {
 
   public void setNumero(Integer numero) {
     this.numero = numero;
-  }
-  
-  public int getIndex() {
-    return index;
-  }
-
-  public void setIndex(int index) {
-    this.index = index;
   }
 
   public String getData() {

@@ -37,10 +37,6 @@
       </p:toolbar>
       
       <p:dataTable value="#{oSBean.ordens}" var="ordem">
-        <p:column headerText="Índice" sortBy="#{ordem.index}">
-          <h:outputText value="#{ordem.index}"></h:outputText>
-        </p:column>
-
         <p:column headerText="Data" sortBy="#{ordem.data}">
           <h:outputText value="#{ordem.data}"></h:outputText>
         </p:column>
@@ -58,30 +54,8 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{oSBean.remover(ordem)}" value="Remover" update="@form"></p:commandButton>
+          <p:commandButton action="#{oSBean.Editar(ordem)}" value="Editar" update="@form"></p:commandButton>
         </p:column>
       </p:dataTable> <br/>
-      
-      <p:fieldset legend="Dados para alterar OS (Através do índice)">
-        <p:panelGrid columns="2">
-          <h:outputLabel value="Índice"></h:outputLabel>
-          <p:inputMask value="#{oSBean.ordemAlterada.index}"></p:inputMask>
-          
-          <h:outputLabel value="Data"></h:outputLabel>
-          <p:inputMask value="#{oSBean.ordemAlterada.data}"></p:inputMask>
-
-          <h:outputLabel value="ID Carro"></h:outputLabel>
-          <p:inputText value="#{oSBean.ordemAlterada.idCarro}"></p:inputText>
-
-          <h:outputLabel value="ID Cliente"></h:outputLabel>
-          <p:inputText value="#{oSBean.ordemAlterada.idCliente}"></p:inputText>
-
-          <h:outputLabel value="ID Equipe"></h:outputLabel>
-          <p:inputText value="#{oSBean.ordemAlterada.idEquipe}"></p:inputText>
-          
-          <h:outputLabel value=""></h:outputLabel>
-          <p:commandButton value="Alterar" action="#{oSBean.alterar()}" update="@form"></p:commandButton>
-        </p:panelGrid>
-      </p:fieldset>
     </h:form>
 </ui:decorate>

@@ -15,9 +15,22 @@ public class EquipeDao {
   public void salvar(Equipe equipe) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`equipe`(`id`)VALUES(?)");
+      PreparedStatement ps; 
       
-      ps.setInt(1, equipe.getId());
+      if (equipe.getId() == null) {
+        ps = conexao.prepareCall("INSERT INTO `oficina`.`equipe`(`id`)VALUES(?)");
+        
+        ps.setInt(1, equipe.getId());
+      }
+      else {
+        int idAntes = equipe.getId();
+        
+        ps = conexao.prepareStatement("UPDATE oficina.equipe SET id = ? WHERE id = ?");
+        
+        ps.setInt(1, equipe.getId());
+        ps.setInt(2, idAntes);
+      }
+                
       ps.execute();
       
       FabricaConexao.fecharConexao();

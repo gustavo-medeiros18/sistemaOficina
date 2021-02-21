@@ -15,7 +15,15 @@ public class ProdutoServicoDao {
   public void salvar(ProdutoServico produtoServico) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps = conexao.prepareCall("INSERT INTO `oficina`.`produto/servico`(`nome`)VALUES(?)");
+      PreparedStatement ps;
+      
+      if (produtoServico.getId() == null)
+        ps = conexao.prepareCall("INSERT INTO `oficina`.`produto/servico`(`nome`)VALUES(?)");
+      else {
+        ps = conexao.prepareStatement("UPDATE `oficina`.`produto/servico` SET nome = ? WHERE id = ?");
+        
+        ps.setInt(2, produtoServico.getId());
+      }
       
       ps.setString(1, produtoServico.getNome());
       ps.execute();

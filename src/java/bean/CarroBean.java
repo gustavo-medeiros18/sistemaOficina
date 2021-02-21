@@ -12,8 +12,7 @@ import dao.CarroDao;
 @SessionScoped
 
 public class CarroBean {
-  private int indexAtual = 0;
-  private Carro c = new Carro(0);
+  private Carro c = new Carro();
   private Carro carroAlterado = new Carro();
   private List<Carro> carros = new ArrayList<>();
   private CarroDao carrodao= new CarroDao(); 
@@ -43,8 +42,7 @@ public class CarroBean {
   }
   
   public void adicionar() {
-    /*carros.add(c);*/
-   
+    carros.add(c);
     carrodao.salvar(c);
     
     c = new Carro();
@@ -55,16 +53,8 @@ public class CarroBean {
     carros = carrodao.buscar();
   }
   
-  public void alterar() {
-    for (Carro carro : carros) {
-      if (carro.getIndex() == carroAlterado.getIndex()) {
-        carro.setPlaca(carroAlterado.getPlaca());
-        carro.setMarca(carroAlterado.getMarca());
-        carro.setModelo(carroAlterado.getModelo());
-        carro.setKm(carroAlterado.getKm());
-        carro.setIdCliente(carroAlterado.getIdCliente());
-      }
-    }
+  public void editar(Carro c) {
+    this.c = c;
   }
   
   public void remover(Carro c) {

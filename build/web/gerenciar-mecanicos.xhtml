@@ -42,11 +42,7 @@
         </p:toolbarGroup>
       </p:toolbar>
 
-      <p:dataTable value="#{mecanicoBean.mecanicos}" var="mecanico">
-        <p:column headerText="Índice" sortBy="#{mecanico.index}">
-          <h:outputText value="#{mecanico.index}"></h:outputText>
-        </p:column>
-        
+      <p:dataTable value="#{mecanicoBean.mecanicos}" var="mecanico"> 
         <p:column headerText="ID" sortBy="#{mecanico.id}">
           <h:outputText value="#{mecanico.id}"></h:outputText>
         </p:column>
@@ -76,36 +72,8 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{mecanicoBean.remover(mecanico)}" value="Remover" update="@form"></p:commandButton>
+          <p:commandButton action="#{mecanicoBean.editar(mecanico)}" value="Editar" update="@form"></p:commandButton>
         </p:column>
       </p:dataTable> <br/>
-      
-      <p:fieldset legend="Dados para alterar mecânico (através do índice)">
-        <p:panelGrid columns="2">
-          <h:outputLabel value="Índice"></h:outputLabel>
-          <p:inputMask value="#{mecanicoBean.mecanicoAlterado.index}"></p:inputMask>
-          
-          <h:outputLabel value="Nome"></h:outputLabel>
-          <p:inputMask value="#{mecanicoBean.mecanicoAlterado.nome}"></p:inputMask>
-          
-          <h:outputLabel value="CPF"></h:outputLabel>
-          <p:inputMask mask="999.999.999-99" value="#{mecanicoBean.mecanicoAlterado.cpf}"></p:inputMask>
-
-          <h:outputLabel value="Endereco"></h:outputLabel>
-          <p:inputText value="#{mecanicoBean.mecanicoAlterado.endereco}"></p:inputText>
-
-          <h:outputLabel value="Cidade"></h:outputLabel>
-          <p:inputText value="#{mecanicoBean.mecanicoAlterado.cidade}"></p:inputText>
-
-          <h:outputLabel value="Estado"></h:outputLabel>
-          <p:inputText value="#{mecanicoBean.mecanicoAlterado.estado}"></p:inputText>
-          
-          <h:outputLabel value="ID Equipe"></h:outputLabel>
-          <p:inputText value="#{mecanicoBean.mecanicoAlterado.idEquipe}"></p:inputText>
-          
-          <h:outputLabel value=""></h:outputLabel>
-          <p:commandButton value="Alterar" action="#{mecanicoBean.alterar()}" update="@form"></p:commandButton>
-        </p:panelGrid>
-      </p:fieldset>
     </h:form>
 </ui:decorate>
