@@ -33,7 +33,6 @@ public class CarroBean {
   }
   
   public void adicionar() {
-    carros.add(c);
     carrodao.salvar(c);
     
     c = new Carro();
