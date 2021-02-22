@@ -28,13 +28,22 @@
       </p:toolbar>
       
       <p:dataTable value="#{produtoServicoBean.listaPS}" var="ps">
+        <p:column headerText="ID" sortBy="#{ps.id}">
+          <h:outputText value="#{ps.id}"></h:outputText>
+        </p:column>
+        
         <p:column headerText="Nome" sortBy="#{ps.nome}">
           <h:outputText value="#{ps.nome}"></h:outputText>
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{produtoServicoBean.editar(ps)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{produtoServicoBean.editar(ps)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{produtoServicoBean.remover(ps)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
-      </p:dataTable> <br/>
+      </p:dataTable>
     </h:form>
 </ui:decorate>

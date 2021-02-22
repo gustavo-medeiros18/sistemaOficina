@@ -12,7 +12,6 @@ import dao.ProdutoServicoDao;
 
 public class ProdutoServicoBean {
   private ProdutoServico ps = new ProdutoServico();
-  private ProdutoServico psAlterado = new ProdutoServico();
   private List<ProdutoServico> listaPS = new ArrayList<>();
   private ProdutoServicoDao psdao = new ProdutoServicoDao();
   
@@ -22,14 +21,6 @@ public class ProdutoServicoBean {
 
   public void setPS(ProdutoServico ps) {
     this.ps = ps;
-  }
-
-  public ProdutoServico getPsAlterado() {
-    return psAlterado;
-  }
-
-  public void setPsAlterado(ProdutoServico psAlterado) {
-    this.psAlterado = psAlterado;
   }
 
   public List<ProdutoServico> getListaPS() {
@@ -56,6 +47,8 @@ public class ProdutoServicoBean {
   }
   
   public void remover(ProdutoServico ps) {
-    listaPS.remove(ps);
+    psdao.remover(ps);
+    
+    this.listar();
   }
 }

@@ -52,6 +52,8 @@ public class CarroDao {
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+    
+    FabricaConexao.fecharConexao();
   }
   
   public List<Carro> buscar() {
@@ -75,11 +77,14 @@ public class CarroDao {
         carros.add(carro);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return carros;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      FabricaConexao.fecharConexao();
       
       return null;
     }

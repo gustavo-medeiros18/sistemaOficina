@@ -13,7 +13,6 @@ import dao.OSDao;
 
 public class OSBean {
   private OS ordem = new OS();
-  private OS ordemAlterada = new OS();
   private List<OS> ordens = new ArrayList<>();
   private OSDao osdao = new OSDao();
   
@@ -23,14 +22,6 @@ public class OSBean {
 
   public void setOrdem(OS ordem) {
     this.ordem = ordem;
-  }
-
-  public OS getOrdemAlterada() {
-    return ordemAlterada;
-  }
-
-  public void setOrdemAlterada(OS ordemAlterada) {
-    this.ordemAlterada = ordemAlterada;
   }
 
   public List<OS> getOrdens() {
@@ -56,7 +47,9 @@ public class OSBean {
     ordens = osdao.buscar();
   }
   
-  public void remover(OS c) {
-    ordens.remove(c);
+  public void remover(OS ordem) {
+    osdao.remover(ordem);
+    
+    this.listar();
   }
 }

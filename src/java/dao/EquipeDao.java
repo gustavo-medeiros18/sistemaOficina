@@ -15,22 +15,9 @@ public class EquipeDao {
   public void salvar(Equipe equipe) {
     try {
       Connection conexao = FabricaConexao.getConexao();
-      PreparedStatement ps; 
+      PreparedStatement ps = conexao.prepareStatement("INSERT INTO oficina.equipe(id)VALUES(?);"); 
       
-      if (equipe.getId() == null) {
-        ps = conexao.prepareCall("INSERT INTO `oficina`.`equipe`(`id`)VALUES(?)");
-        
-        ps.setInt(1, equipe.getId());
-      }
-      else {
-        int idAntes = equipe.getId();
-        
-        ps = conexao.prepareStatement("UPDATE oficina.equipe SET id = ? WHERE id = ?");
-        
-        ps.setInt(1, equipe.getId());
-        ps.setInt(2, idAntes);
-      }
-                
+      ps.setInt(1, equipe.getId());
       ps.execute();
       
       FabricaConexao.fecharConexao();
@@ -39,6 +26,22 @@ public class EquipeDao {
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
     }
+  }
+  
+  public void remover(Equipe equipe) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`equipe`WHERE id = ?");
+      
+      ps.setInt(1, equipe.getId());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(EquipeDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
   }
   
   public List<Equipe> buscar() {
@@ -57,12 +60,15 @@ public class EquipeDao {
         equipes.add(equipe);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return equipes;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
-      
+      FabricaConexao.fecharConexao();
+  
       return null;
     }
   }

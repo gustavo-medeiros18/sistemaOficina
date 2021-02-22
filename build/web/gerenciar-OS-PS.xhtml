@@ -31,6 +31,10 @@
       </p:toolbar>
       
       <p:dataTable value="#{oSPSBean.listaOSPS}" var="osps">
+        <p:column headerText="ID OSPS" sortBy="#{osps.idOSPS}">
+          <h:outputText value="#{osps.idOSPS}"></h:outputText>
+        </p:column>
+        
         <p:column headerText="Número OS" sortBy="#{osps.numeroOS}">
           <h:outputText value="#{osps.numeroOS}"></h:outputText>
         </p:column>
@@ -40,7 +44,12 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{oSPSBean.editar(osps)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{oSPSBean.editar(osps)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{oSPSBean.remover(osps)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
       </p:dataTable> <br/>
     </h:form>

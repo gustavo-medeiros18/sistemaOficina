@@ -39,6 +39,22 @@ public class OSDao {
     }
   }
   
+  public void remover(OS ordem) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`os` WHERE numero = ?");
+      
+      ps.setInt(1, ordem.getNumero());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(OSDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
+  }
+  
   public List<OS> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();
@@ -59,12 +75,14 @@ public class OSDao {
         listaos.add(os);
       }
       
+      FabricaConexao.fecharConexao();
       return listaos;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
       
+      FabricaConexao.fecharConexao();
       return null;
     }
   }

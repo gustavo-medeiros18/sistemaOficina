@@ -33,7 +33,12 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{equipeBean.editar(equipe)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{equipeBean.editar(equipe)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{equipeBean.remover(equipe)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
       </p:dataTable>
     </h:form>

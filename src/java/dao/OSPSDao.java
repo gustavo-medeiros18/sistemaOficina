@@ -37,6 +37,22 @@ public class OSPSDao {
     }
   }
   
+  public void excluir(OSProdutoServico osps) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`os-produto/servico` WHERE idOSPS = ?");
+      
+      ps.setInt(1, osps.getIdOSPS());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(OSPSDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
+  }
+  
   public List<OSProdutoServico> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();
@@ -55,11 +71,14 @@ public class OSPSDao {
         listaOSPS.add(osps);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return listaOSPS;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      FabricaConexao.fecharConexao();
       
       return null;
     }

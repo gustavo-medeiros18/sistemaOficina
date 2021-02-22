@@ -36,6 +36,22 @@ public class ProdutoServicoDao {
     }
   }
   
+  public void remover(ProdutoServico produtoservico) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`produto/servico` WHERE id = ?");
+      
+      ps.setInt(1, produtoservico.getId());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(ProdutoServicoDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
+  }
+  
   public List<ProdutoServico> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();
@@ -53,11 +69,14 @@ public class ProdutoServicoDao {
         listaprodutoservico.add(produtoservico);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return listaprodutoservico;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      FabricaConexao.fecharConexao();
       
       return null;
     }

@@ -12,7 +12,6 @@ import dao.EquipeDao;
 
 public class EquipeBean {
   private Equipe e = new Equipe();
-  private Equipe equipeAlterada = new Equipe();
   private List<Equipe> equipes = new ArrayList<>();
   private EquipeDao equipedao = new EquipeDao();
   
@@ -22,14 +21,6 @@ public class EquipeBean {
 
   public void setE(Equipe e) {
     this.e = e;
-  }
-
-  public Equipe getEquipeAlterada() {
-    return equipeAlterada;
-  }
-
-  public void setEquipeAlterada(Equipe equipeAlterada) {
-    this.equipeAlterada = equipeAlterada;
   }
 
   public List<Equipe> getEquipes() {
@@ -56,6 +47,8 @@ public class EquipeBean {
   }
   
   public void remover(Equipe e) {
-    equipes.remove(e);
+    equipedao.remover(e);
+    
+    this.listar();
   }
 }

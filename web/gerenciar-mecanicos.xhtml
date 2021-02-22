@@ -72,7 +72,12 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{mecanicoBean.editar(mecanico)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{mecanicoBean.editar(mecanico)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{mecanicoBean.remover(mecanico)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
       </p:dataTable> <br/>
     </h:form>

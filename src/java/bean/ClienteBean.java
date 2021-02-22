@@ -13,7 +13,6 @@ import dao.ClienteDao;
 
 public class ClienteBean {
   private Cliente c = new Cliente();
-  private Cliente clienteAlterado = new Cliente();
   private List<Cliente> clientes = new ArrayList<>();
   private ClienteDao clientedao = new ClienteDao();
   
@@ -23,14 +22,6 @@ public class ClienteBean {
 
   public void setC(Cliente c) {
     this.c = c;
-  }
-
-  public Cliente getClienteAlterado() {
-    return clienteAlterado;
-  }
-
-  public void setClienteAlterado(Cliente clienteAlterado) {
-    this.clienteAlterado = clienteAlterado;
   }
 
   public List<Cliente> getClientes() {
@@ -57,6 +48,8 @@ public class ClienteBean {
   }
   
   public void remover(Cliente c) {
-    clientes.remove(c);
+    clientedao.excluir(c);
+    
+    this.listar();
   }
 }

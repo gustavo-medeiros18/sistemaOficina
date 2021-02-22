@@ -12,7 +12,6 @@ import dao.MecanicoDao;
 
 public class MecanicoBean {
   private Mecanico m = new Mecanico();
-  private Mecanico mecanicoAlterado = new Mecanico();
   private List<Mecanico> mecanicos = new ArrayList<>();
   private MecanicoDao mecanicodao = new MecanicoDao();
   
@@ -22,14 +21,6 @@ public class MecanicoBean {
 
   public void setM(Mecanico m) {
     this.m = m;
-  }
-
-  public Mecanico getMecanicoAlterado() {
-    return mecanicoAlterado;
-  }
-
-  public void setMecanicoAlterado(Mecanico mecanicoAlterado) {
-    this.mecanicoAlterado = mecanicoAlterado;
   }
 
   public List<Mecanico> getMecanicos() {
@@ -56,6 +47,8 @@ public class MecanicoBean {
   }
   
   public void remover(Mecanico m) {
-    mecanicos.remove(m);
+    mecanicodao.remover(m);
+    
+    this.listar();
   }
 }

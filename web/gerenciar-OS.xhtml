@@ -37,6 +37,10 @@
       </p:toolbar>
       
       <p:dataTable value="#{oSBean.ordens}" var="ordem">
+        <p:column headerText="Número OS" sortBy="#{ordem.numero}">
+          <h:outputText value="#{ordem.numero}"></h:outputText>
+        </p:column>
+        
         <p:column headerText="Data" sortBy="#{ordem.data}">
           <h:outputText value="#{ordem.data}"></h:outputText>
         </p:column>
@@ -54,7 +58,12 @@
         </p:column>
 
         <p:column headerText="Ações">
-          <p:commandButton action="#{oSBean.Editar(ordem)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{oSBean.Editar(ordem)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{oSBean.remover(ordem)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
       </p:dataTable> <br/>
     </h:form>

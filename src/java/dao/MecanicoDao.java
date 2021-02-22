@@ -41,6 +41,22 @@ public class MecanicoDao {
     }
   }
   
+  public void remover(Mecanico mecanico) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`mecanico` WHERE id = ?");
+      
+      ps.setInt(1, mecanico.getId());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(MecanicoDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
+  }
+  
   public List<Mecanico> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();
@@ -63,11 +79,14 @@ public class MecanicoDao {
         mecanicos.add(mecanico);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return mecanicos;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      FabricaConexao.fecharConexao();
       
       return null;
     }

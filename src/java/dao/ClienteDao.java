@@ -39,6 +39,22 @@ public class ClienteDao {
     }
   }
   
+  public void excluir(Cliente cliente) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`cliente` WHERE id = ?");
+      
+      ps.setInt(1, cliente.getId());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    
+    FabricaConexao.fecharConexao();
+  }
+  
   public List<Cliente> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();
@@ -60,11 +76,14 @@ public class ClienteDao {
         clientes.add(cliente);
       }
       
+      FabricaConexao.fecharConexao();
+      
       return clientes;
     }
     
     catch (SQLException ex) {
       Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+      FabricaConexao.fecharConexao();
       
       return null;
     }

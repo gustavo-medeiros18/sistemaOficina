@@ -47,6 +47,8 @@ public class OSPSBean {
   }
   
   public void remover(OSProdutoServico osps) {
-    listaOSPS.remove(osps);
+    ospsDao.excluir(osps);
+    
+    this.listar();
   }
 }
