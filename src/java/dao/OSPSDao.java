@@ -18,7 +18,7 @@ public class OSPSDao {
       PreparedStatement ps;
       
       if (osps.getIdOSPS() == null)
-        ps = conexao.prepareCall("INSERT INTO `oficina`.`os-produto/servico`(`numeroOS`,`idProdutoServico`)VALUES(?,?)");
+        ps = conexao.prepareStatement("INSERT INTO `oficina`.`os-produto/servico`(`numeroOS`,`idProdutoServico`)VALUES(?,?)");
       else {
         ps = conexao.prepareStatement("UPDATE `oficina`.`os-produto/servico` SET numeroOS = ?, idProdutoServico = ? WHERE idOSPS = ?");
         
@@ -48,6 +48,7 @@ public class OSPSDao {
       while (resultSet.next()) {
         OSProdutoServico osps = new OSProdutoServico();
         
+        osps.setIdOSPS(resultSet.getInt("idOSPS"));
         osps.setNumeroOS(resultSet.getInt("numeroOS"));
         osps.setIdProdutoServico(resultSet.getInt("idProdutoServico"));
   

@@ -12,7 +12,6 @@ import dao.OSPSDao;
 
 public class OSPSBean {
   private OSProdutoServico osps = new OSProdutoServico();
-  private OSProdutoServico ospsAlterado = new OSProdutoServico();
   private List<OSProdutoServico> listaOSPS = new ArrayList<>();
   private OSPSDao ospsDao = new OSPSDao();
   
@@ -22,14 +21,6 @@ public class OSPSBean {
 
   public void setOSPS(OSProdutoServico osps) {
     this.osps = osps;
-  }
-
-  public OSProdutoServico getOspsAlterado() {
-    return ospsAlterado;
-  }
-
-  public void setOspsAlterado(OSProdutoServico ospsAlterado) {
-    this.ospsAlterado = ospsAlterado;
   }
 
   public List<OSProdutoServico> getListaOSPS() {
