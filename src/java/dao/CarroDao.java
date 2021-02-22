@@ -40,6 +40,20 @@ public class CarroDao {
     }
   }
   
+  public void excluir(Carro carro) {
+    try {
+      Connection conexao = FabricaConexao.getConexao();
+      PreparedStatement ps = conexao.prepareStatement("DELETE FROM `oficina`.`carro` WHERE id = ?");
+      
+      ps.setInt(1, carro.getId());
+      ps.execute();
+    }
+    
+    catch (SQLException ex) {
+      Logger.getLogger(CarroDao.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
   public List<Carro> buscar() {
     try {
       Connection conexao = FabricaConexao.getConexao();

@@ -63,10 +63,16 @@
         <p:column headerText="ID Cliente (Dono)" sortBy="#{carro.idCliente}">
           <h:outputText value="#{carro.idCliente}"></h:outputText>
         </p:column>
-
+        
         <p:column headerText="Ações">
-          <p:commandButton action="#{carroBean.editar(carro)}" value="Editar" update="@form"></p:commandButton>
+          <p:toolbar>
+            <p:toolbarGroup>
+              <p:commandButton action="#{carroBean.editar(carro)}" value="Editar" update="@form"></p:commandButton>
+              <p:commandButton action="#{carroBean.remover(carro)}" value="Excluir" update="@form"></p:commandButton>
+            </p:toolbarGroup>
+          </p:toolbar>
         </p:column>
+        
       </p:dataTable> <br/>
     </h:form>
 </ui:decorate>

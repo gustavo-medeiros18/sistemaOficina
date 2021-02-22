@@ -13,7 +13,6 @@ import dao.CarroDao;
 
 public class CarroBean {
   private Carro c = new Carro();
-  private Carro carroAlterado = new Carro();
   private List<Carro> carros = new ArrayList<>();
   private CarroDao carrodao= new CarroDao(); 
   
@@ -23,14 +22,6 @@ public class CarroBean {
 
   public void setC(Carro c) {
     this.c = c;
-  }
-
-  public Carro getCarroAlterado() {
-    return carroAlterado;
-  }
-
-  public void setCarroAlterado(Carro carroAlterado) {
-    this.carroAlterado = carroAlterado;
   }
   
   public List<Carro> getCarros() {
@@ -58,6 +49,8 @@ public class CarroBean {
   }
   
   public void remover(Carro c) {
-    carros.remove(c);
+    carrodao.excluir(c);
+    
+    this.listar();
   }
 }
